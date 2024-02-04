@@ -63,5 +63,11 @@ Xを利用して宣伝を行う。
   - 投稿内容に店の位置情報（マップ表示）を追加する機能(Google Maps API)
 
 ## ■ 機能の実装方針予定
-- Open AI APIを使用した、お酒、食材の情報から組み合わせを提案する機能の実装
-- Google Maps APIを使用した、位置表示機能の実装
+|カテゴリ|技術|
+|:-------------|:------------|
+|開発環境|Docker|
+|フロントエンド|Bootstrap または TailwindCSS|
+|バックエンド|Ruby 3.2.2, Ruby on Rails 7系|
+|データベース|PostgreSQL|
+|インフラ|Render|
+|Web API|Open AI API(GPT-4), Google Maps API|
