@@ -71,3 +71,6 @@ Xを利用して宣伝を行う。
 |データベース|PostgreSQL|
 |インフラ|Render|
 |Web API|Open AI API(GPT-4), Google Maps API|
+
+## 画面遷移図
+https://www.figma.com/file/zbN5SVC7FRK5g46pMPRmUC/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=H6spxD558HZYnSwa-1
