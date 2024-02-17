@@ -74,3 +74,6 @@ Xを利用して宣伝を行う。
 
 ## 画面遷移図
 https://www.figma.com/file/zbN5SVC7FRK5g46pMPRmUC/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=H6spxD558HZYnSwa-1
+
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/de16b12848af959280271c996d8c6fe5.png)](https://gyazo.com/de16b12848af959280271c996d8c6fe5)
