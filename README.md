@@ -76,4 +76,4 @@ Xを利用して宣伝を行う。
 https://www.figma.com/file/zbN5SVC7FRK5g46pMPRmUC/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=H6spxD558HZYnSwa-1
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/96f37bd23636988bec4a3728b3a7368c.png)](https://gyazo.com/96f37bd23636988bec4a3728b3a7368c)
+[![Image from Gyazo](https://i.gyazo.com/183310ecc5ccba1d742ad9382b3a55e1.png)](https://gyazo.com/183310ecc5ccba1d742ad9382b3a55e1)
