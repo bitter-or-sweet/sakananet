@@ -10,7 +10,15 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      "retro"
+      "light"
     ],
   },
+  theme: {
+    extend: {
+      colors: {
+        theme: "#E07900",
+        point: "#FFE8AC"
+      }
+    }
+  }
 }
