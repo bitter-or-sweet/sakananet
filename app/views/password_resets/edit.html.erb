@@ -1,2 +1,20 @@
-<h1>PasswordResets#edit</h1>
-<p>Find me in app/views/password_resets/edit.html.erb</p>
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center">パスワード変更</h1>
+  <%= form_with model: @user, url: password_reset_path(@token), local: true do |f| %>
+    <div class="mb-5">
+      <%= f.label :email %>
+      <%= @user.email %>
+    </div>
+    <div class="mb-5">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'input border-gray-400 w-full' %>
+    </div>
+    <div class="mb-5">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'input border-gray-400 w-full' %>
+    </div>
+    <div class="sm-text-lg font-semibold text-center">
+      <%= f.submit 'パスワード変更', class: 'text-sm sm:text-base bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full p-3' %>
+    </div>
+  <% end %>
+</div>
