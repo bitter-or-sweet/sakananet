@@ -4,7 +4,7 @@
     <p>現在登録しているメールアドレスを入力してください</p>
     <p>パスワードリセット用のメールを送信します</p>
   </div>
-  <%= form_with url: password_resets_path, local: true do |f| %>
+  <%= form_with url: password_resets_path do |f| %>
     <div class="mb-5">
       <%= f.label :email %>
       <%= f.email_field :email, class: 'input border-gray-400 w-full' %>
