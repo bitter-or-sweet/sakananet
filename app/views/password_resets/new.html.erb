@@ -1,0 +1,16 @@
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center">パスワードリセット</h1>
+  <div class="text-center">
+    <p>現在登録しているメールアドレスを入力してください</p>
+    <p>パスワードリセット用のメールを送信します</p>
+  </div>
+  <%= form_with url: password_resets_path do |f| %>
+    <div class="mb-5">
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'input border-gray-400 w-full' %>
+    </div>
+    <div class="sm-text-lg font-semibold text-center">
+      <%= f.submit 'パスワードリセット', class: 'text-sm sm:text-base bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full p-3' %>
+    </div>
+  <% end %>
+</div>
