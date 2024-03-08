@@ -2,15 +2,15 @@
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center">パスワード変更</h1>
   <%= form_with model: @user, url: password_reset_path(@token), local: true do |f| %>
     <div class="mb-5">
-      <%= f.label :email %>
-      <%= @user.email %>
+      <%= f.label :email, 'メールアドレス' %>
+      <p><%= @user.email %></p>
     </div>
     <div class="mb-5">
-      <%= f.label :password %>
+      <%= f.label :password, 'パスワード' %>
       <%= f.password_field :password, class: 'input border-gray-400 w-full' %>
     </div>
     <div class="mb-5">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, 'パスワード確認' %>
       <%= f.password_field :password_confirmation, class: 'input border-gray-400 w-full' %>
     </div>
     <div class="sm-text-lg font-semibold text-center">
