@@ -53,6 +53,8 @@ gem "bootsnap", require: false
 
 gem "sorcery"
 
+gem 'rails-i18n'
+
 gem "config"
 
 group :development, :test do
