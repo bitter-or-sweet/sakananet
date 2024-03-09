@@ -1,0 +1,5 @@
+<% flash.each do |message_type, message| %>
+  <div class="<%= flash_color_type(message_type) %> border-l-4 p-4" role="alert">
+    <%= message %>
+  </div>
+<% end %>

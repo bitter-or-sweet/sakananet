@@ -1,8 +1,10 @@
-<header class="container mx-auto flex justify-between items-center px-5 w-full pt-5">
-  <%= link_to '酒菜ネット', root_path, class:"text-3xl font-bold" %>
-  <div class="space-x-14 items-center text-lg font-bold">
-    <%= link_to t('header.post_index'), '#' %>
-    <%= link_to t('header.sign_up'), new_user_path %>
-    <%= link_to t('header.login'), login_path %>
+<header class="bg-theme bg-opacity-50">
+  <div class="container mx-auto flex justify-between items-center px-5 py-5 w-full">
+    <%= link_to '酒菜ネット', root_path, class:"text-3xl font-bold" %>
+    <div class="space-x-14 items-center text-lg font-bold">
+      <%= link_to t('header.post_index'), '#' %>
+      <%= link_to t('header.sign_up'), new_user_path %>
+      <%= link_to t('header.login'), login_path %>
+    </div>
   </div>
 </header>
