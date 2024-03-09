@@ -14,14 +14,26 @@ ja:
       title: ログイン
       login: ログイン
       password_forget: パスワードをお忘れの方はこちら
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
   users:
     new:
       title: ユーザー登録
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
   password_resets:
     new:
       title: パスワードリセット
+    create:
+      success: パスワードリセットのメールを送信しました
     edit:
       title: パスワード変更
+    update: パスワードがリセットされました
+    failure: パスワードリセットに失敗しました
   header:
     login: ログイン
     logout: ログアウト
