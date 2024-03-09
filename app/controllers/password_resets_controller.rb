@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     @user&.deliver_reset_password_instructions!
-    redirect_to login_path, notice: 'パスワードリセットのメールを送信しました'
+    redirect_to login_path, notice: t('.success')
   end
 
   def edit
@@ -22,9 +22,9 @@ class PasswordResetsController < ApplicationController
 
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password(params[:user][:password])
-      redirect_to login_path, notice: 'パスワードがリセットされました'
+      redirect_to login_path, notice: t('.success')
     else
-      flash.now[:alert] = 'パスワードリセットに失敗しました'
+      flash.now[:alert] = t('.failure')
       render :edit, status: :unprocessable_entity
     end
   end
