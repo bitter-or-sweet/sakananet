@@ -1,0 +1,35 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+      password_reset: パスワードリセット
+      password_change: パスワード変更
+    label:
+      email: メールアドレス
+      password: パスワード
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      password_forget: パスワードをお忘れの方はこちら
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  password_resets:
+    new:
+      title: パスワードリセット
+    edit:
+      title: パスワード変更
+  header:
+    login: ログイン
+    logout: ログアウト
+    signup: 新規登録
+    post_index: 投稿一覧
+    create_post: 投稿する
+    bookmark_index: ブックマーク一覧
+    profile: プロフィール
+    ai_combination: AI組合せ
+    mypage: マイページ
