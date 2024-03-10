@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.text :body, null: false
       t.string :alcohol, null: false
       t.string :appetizer, null: false
-      t.references :user, null: false, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
