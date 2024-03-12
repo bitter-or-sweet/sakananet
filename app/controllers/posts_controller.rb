@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @alcohol_genres = AlcoholGenre.all
+    @appetizer_genres = AppetizerGenre.all
   end
 
   def create
