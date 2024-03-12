@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_10_054251) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_12_023516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alcohol_genres", force: :cascade do |t|
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "appetizer_genres", force: :cascade do |t|
+    t.string "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
@@ -22,6 +34,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_054251) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "alcohol_genre_id"
+    t.bigint "appetizer_genre_id"
+    t.index ["alcohol_genre_id"], name: "index_posts_on_alcohol_genre_id"
+    t.index ["appetizer_genre_id"], name: "index_posts_on_appetizer_genre_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -40,5 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_10_054251) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "alcohol_genres"
+  add_foreign_key "posts", "appetizer_genres"
   add_foreign_key "posts", "users"
 end

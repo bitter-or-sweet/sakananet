@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   validates :appetizer, presence: true, length: { maximum: 255 }
 
   belongs_to :user
+  belongs_to :alcohol_genre
+  belongs_to :appetizer_genre
 end

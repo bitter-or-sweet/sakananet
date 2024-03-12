@@ -4,11 +4,16 @@ ja:
       create: 登録
       submit: 保存
       update: 更新
+      post: 投稿する
       password_reset: パスワードリセット
       password_change: パスワード変更
     label:
       email: メールアドレス
       password: パスワード
+  defaults:
+    message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
   user_sessions:
     new:
       title: ログイン
@@ -34,6 +39,9 @@ ja:
       title: パスワード変更
     update: パスワードがリセットされました
     failure: パスワードリセットに失敗しました
+  posts:
+    new:
+      title: 投稿フォーム
   header:
     login: ログイン
     logout: ログアウト
