@@ -40,8 +40,12 @@ ja:
     update: パスワードがリセットされました
     failure: パスワードリセットに失敗しました
   posts:
+    index:
+      title: 投稿一覧
     new:
       title: 投稿フォーム
+    posted:
+      title: 過去の投稿一覧
   header:
     login: ログイン
     logout: ログアウト

@@ -4,6 +4,10 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user).order(created_at: :desc)
   end
 
+  def posted
+    @posted_posts = current_user.posts
+  end
+
   def new
     @post = Post.new
     @alcohol_genres = AlcoholGenre.all
