@@ -9,3 +9,10 @@ ja:
         name: 名前
         password: パスワード
         password_confirmation: パスワード確認
+      post:
+        title: タイトル
+        body: 本文
+        alcohol: お酒
+        appetizer: おつまみ
+        alcohol_genre: お酒のジャンル
+        appetizer_genre: おつまみのジャンル
