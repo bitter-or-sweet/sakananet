@@ -6,7 +6,11 @@
       <%= link_to t('header.create_post'), new_post_path %>
       <%= link_to t('header.ai_combination'), '#' %>
       <div class="dropdown dropdown-hover">
-        <%= image_tag 'default.jpg', class:"rounded-[10px] w-10 h-10" %>
+        <% if current_user.avatar? %>
+          <%= image_tag current_user.avatar.url, class:"rounded-[10px] w-10 h-10" %>
+        <% else %>
+          <%= image_tag 'default.jpg', class:"rounded-[10px] w-10 h-10" %>
+        <% end %>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
           <li><%= link_to t('header.my_page'), '#' %></li>
           <li><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %></li>
