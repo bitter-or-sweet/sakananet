@@ -59,8 +59,6 @@ gem "config"
 
 gem "carrierwave"
 
-gem "aws-sdk-s3", require: false
-
 gem "fog-aws"
 
 gem "dotenv-rails"
@@ -86,5 +84,11 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+end
+
+group :production do
+
+  gem "aws-sdk-s3", require: false
 
 end
