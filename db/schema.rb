@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_14_054032) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_17_113341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_14_054032) do
     t.datetime "updated_at", null: false
     t.bigint "alcohol_genre_id"
     t.bigint "appetizer_genre_id"
+    t.string "post_image"
     t.index ["alcohol_genre_id"], name: "index_posts_on_alcohol_genre_id"
     t.index ["appetizer_genre_id"], name: "index_posts_on_appetizer_genre_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
