@@ -31,6 +31,7 @@
   <div class="mb-5">
     <%= f.label :post_image %>
     <%= f.file_field :post_image, class: 'w-full' %>
+    <%= f.hidden_field :post_image_cache %>
   </div>
   <div class="sm-text-lg font-semibold text-center">
     <%= f.submit t('helpers.submit.post'), class: 'bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full w-1/3 py-3' %>
