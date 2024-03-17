@@ -38,7 +38,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg jpeg png)
+    %w(jpg jpeg png webp)
   end
 
   # Override the filename of the uploaded files:
@@ -46,4 +46,17 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg"
   # end
+
+  process :convert_to_webp   #拡張子をWebPに変換する
+
+  def convert_to_webp
+    manipulate! do |image|
+      image.format 'webp'
+      image
+    end
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
 end
