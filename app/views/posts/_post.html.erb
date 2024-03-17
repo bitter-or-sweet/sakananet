@@ -8,7 +8,11 @@
       <%= l post.created_at, format: :long %>
     </div>
     <div class="flex items-center justify-center w-full h-64 ">
-      <%= image_tag 'post_placeholder.png', class: 'max-w-full max-h-full' %>
+      <% if post.post_image? %>
+        <%= image_tag post.post_image.url, class: 'max-w-full max-h-full' %>
+      <% else %>
+        <%= image_tag 'post_placeholder.png', class: 'max-w-full max-h-full' %>
+      <% end %>
     </div>
     <div class="space-y-2">
       <P><%= post.title %></p>
