@@ -46,6 +46,8 @@ ja:
       title: 投稿フォーム
     posted:
       title: 過去の投稿一覧
+    show:
+      title: 投稿詳細
   header:
     login: ログイン
     logout: ログアウト
