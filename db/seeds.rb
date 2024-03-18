@@ -1,22 +1,9 @@
-AlcoholGenre.create!(
-  [
-    { genre: 'ビール' },
-    { genre: '焼酎' },
-    { genre: '日本酒' },
-    { genre: 'ウイスキー' },
-    { genre: 'ワイン' },
-    { genre: 'その他' }
-  ]
-)
+alcohol_genres = ['ビール', '焼酎', '日本酒', 'ウイスキー', 'ワイン', 'その他']
+alcohol_genres.each do |genre|
+  AlcoholGenre.find_or_create_by!(genre: genre)
+end
 
-AppetizerGenre.create!(
-  [
-    { genre: '和食' },
-    { genre: '洋食' },
-    { genre: '中華' },
-    { genre: '韓国' },
-    { genre: 'イタリアン' },
-    { genre: 'フレンチ' },
-    { genre: 'その他' },
-  ]
-)
+appetizer_genres = ['和食', '洋食', '中華', '韓国', 'イタリアン', 'フレンチ', 'その他']
+appetizer_genres.each do |genre|
+  AppetizerGenre.find_or_create_by!(genre: genre)
+end
