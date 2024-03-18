@@ -8,7 +8,7 @@
       <ul class="space-y-2 text-lg mb-5">
         <li><%= @post.title %></li>
         <li>お酒：<%= @post.alcohol %>（<%= @post.alcohol_genre.genre %>）</li>
-        <li>おつまみ：<%= @post.appetizer %></li>
+        <li>おつまみ：<%= @post.appetizer %>（<%= @post.appetizer_genre.genre %>）</li>
       </ul>
       <div class="flex justify-start mb-5">
         <% if current_user.avatar? %>
