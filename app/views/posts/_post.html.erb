@@ -2,7 +2,7 @@
   <div class="border border-gray-500 bg-white p-4 rounded-lg">
     <div class="flex flex-row justify-between">
       <div class="flex flex-row items-center">
-        <%= image_tag 'default.jpg', class: 'rounded-full h-2 w-2 flex items-center justify-center border mr-2' %>
+        <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
         <%= link_to post.user.name, '#' %>
       </div>
       <%= l post.created_at, format: :long %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="space-y-2">
-      <P><%= post.title %></p>
+      <%= link_to post.title, post_path(post) %>
       <P>お酒：<%= post.alcohol %></p>
       <P>おつまみ：<%= post.appetizer %></p>
     </div>
