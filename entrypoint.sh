@@ -8,6 +8,7 @@ rm -f /app/tmp/pids/server.pid
 RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_ENV=production bundle exec rake assets:clean
 RAILS_ENV=production bundle exec rake db:migrate
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:migrate:reset
 RAILS_ENV=production bundle exec rails db:seed
 
 exec "$@"
