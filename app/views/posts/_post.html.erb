@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="space-y-2">
-      <P><%= post.title %></p>
+      <%= link_to post.title, post_path(post) %>
       <P>お酒：<%= post.alcohol %></p>
       <P>おつまみ：<%= post.appetizer %></p>
     </div>
