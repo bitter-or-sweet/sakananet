@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
 
-  def show_meta_tags
+  def default_meta_tags
     {
       site: '酒菜ネット',
       title: 'お酒&おつまみの組み合わせを共有するサービス',
