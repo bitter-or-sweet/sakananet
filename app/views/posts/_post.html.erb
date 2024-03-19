@@ -2,7 +2,11 @@
   <div class="border border-gray-500 bg-white p-4 rounded-lg">
     <div class="flex flex-row justify-between">
       <div class="flex flex-row items-center">
-        <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
+        <% if post.user.avatar? %>
+          <%= image_tag post.user.avatar.url, class: 'rounded-[10px] h-7 w-7 border mr-2' %>
+        <% else %>
+          <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
+        <% end %>
         <%= link_to post.user.name, '#' %>
       </div>
       <%= l post.created_at, format: :long %>
