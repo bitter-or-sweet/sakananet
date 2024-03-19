@@ -10,7 +10,11 @@
         <li>お酒：<%= @post.alcohol %>（<%= @post.alcohol_genre.genre %>）</li>
         <li>おつまみ：<%= @post.appetizer %>（<%= @post.appetizer_genre.genre %>）</li>
       </ul>
-      <div class="flex justify-start mb-5">
+      <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+          class: "bg-slate-950 text-white py-2 px-5 hover:shadow-lg rounded-full text-lg mx-4"  do %>
+        <i class="fa-brands fa-x-twitter mr-2"></i>で共有
+      <% end %>
+      <div class="flex justify-start my-5">
         <% if current_user.avatar? %>
           <%= image_tag current_user.avatar.url, class:"rounded-[5px] w-7 h-7 mr-5" %>
         <% else %>
