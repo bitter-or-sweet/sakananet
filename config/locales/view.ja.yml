@@ -5,6 +5,7 @@ ja:
       submit: 保存
       update: 更新
       post: 投稿する
+      comment: コメントする
       password_reset: パスワードリセット
       password_change: パスワード変更
     label:
