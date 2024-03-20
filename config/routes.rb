@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'tops#index'
   resources :users, only: %i[new create]
   resources :posts do
+    resources :comments, only: %i[create], shallow: true
     collection do
       get 'posted'
     end

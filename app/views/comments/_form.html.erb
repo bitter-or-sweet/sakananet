@@ -1,0 +1,12 @@
+<h1 class="flex justify-center font-bold text-base sm:text-xl mb-10">この投稿へのコメント</h1>
+<%= form_with model: comment, url: [post, comment], class:"mb-10", local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="flex flex-wrap md:justify-between">
+    <div class="w-full md:w-3/4">
+      <%= f.text_area :body, class: 'input border-gray-400 w-full', row: 4,  placeholder: Comment.human_attribute_name(:body) %>
+    </div>
+    <div class="flex w-full md:w-1/4 justify-center md:justify-end">
+      <%= f.submit t('helpers.submit.comment'), class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-[10px] px-3 py-2 h-12' %>
+    </div>
+  </div>
+<% end %>

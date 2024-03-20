@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :reset_password_token, uniqueness: true, allow_nil: true
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 end

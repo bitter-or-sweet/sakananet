@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :alcohol_genre
   belongs_to :appetizer_genre
+  has_many :comments, dependent: :destroy
 
   mount_uploader :post_image, PostImageUploader
 end

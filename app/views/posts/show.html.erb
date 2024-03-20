@@ -25,4 +25,8 @@
       <%= @post.body %>
     </div>
   </div>
+  <div class="md:w-2/3 mx-auto">
+    <%= render 'comments/form', { post: @post, comment: @comment } %>
+    <%= render 'comments/comments', { comments: @comments } %>
+  </div>
 </div>

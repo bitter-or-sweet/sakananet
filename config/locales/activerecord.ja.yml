@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       post: 投稿
+      comment: コメント
     attributes:
       user:
         email: メールアドレス
@@ -18,3 +19,5 @@ ja:
         alcohol_genre: お酒のジャンル
         appetizer_genre: おつまみのジャンル
         post_image: お酒&おつまみの画像
+      comment:
+        body: コメント
