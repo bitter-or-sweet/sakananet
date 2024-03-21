@@ -10,5 +10,17 @@
     </div>
     <%= l comment.created_at, format: :long %>
   </div>
-  <%= simple_format(comment.body) %>
+  <div class="flex flex-row justify-between">
+    <%= simple_format(comment.body) %>
+    <% if current_user.own?(comment) %>
+      <div class="flex flex-row items-center space-x-5">
+        <%= link_to '#' do %>
+          <i class="fa-regular fa-pen-to-square"></i>
+        <% end %>
+        <%= link_to '#' do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
