@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
+
+  def own?(object)
+    object.user_id == id
+  end
 end
