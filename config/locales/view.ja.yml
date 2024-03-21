@@ -15,6 +15,10 @@ ja:
     message:
       created: "%{item}を作成しました"
       not_created: "%{item}を作成出来ませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
+      deleted_confirm: 削除しますか？
   user_sessions:
     new:
       title: ログイン
