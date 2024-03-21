@@ -6,6 +6,16 @@
       <%= image_tag @post.post_image.url, size: '500x400' %>
     </div>
     <div class="w-full md:w-1/2 pl-10">
+      <% if current_user.own?(@post) %>
+        <div class="flex justify-end space-x-5">
+          <%= link_to edit_post_path(@post) do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+          <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      <% end %>
       <ul class="space-y-2 text-lg mb-5">
         <li><%= @post.title %></li>
         <li>お酒：<%= @post.alcohol %>（<%= @post.alcohol_genre.genre %>）</li>
