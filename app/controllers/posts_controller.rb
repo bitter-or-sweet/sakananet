@@ -48,6 +48,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: t('defaults.message.deleted', item: Post.model_name.human), status: :see_other
   end
 
+  def likes
+    @like_posts = current_user.likes.include(:user).order(created_at: :desc)
+  end
+
   private
 
   def set_post
