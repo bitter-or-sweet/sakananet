@@ -1,14 +1,14 @@
-class LikeController < ApplicationController
+class LikesController < ApplicationController
 
 	def create
 		post = Post.find(params[:post_id])
 		current_user.like(post)
-		redirect_back fallback_location: root_path, notice: t('.success')
+		redirect_to post_path(post), notice: t('.success')
 	end
 
 	def destroy
 		post = current_user.likes.find(params[:id]).post
 		current_user.unlike(post)
-		redirect_back fallback_location: root_path, notice: t('defaults.message.unlike')
+		redirect_to post_path(post), notice: t('defaults.message.unlike'), status: :see_other
 	end
 end
