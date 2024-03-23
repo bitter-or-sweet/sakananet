@@ -20,6 +20,8 @@ class LikesController < ApplicationController
       redirect_to posts_path, notice: t('.success'), status: :see_other
     when 'show'
       redirect_to post_path(post), notice: t('.success'), status: :see_other
+    when 'liked_index'
+      redirect_to likes_posts_path, notice: t('.success'), status: :see_other
     end
   end
 end

@@ -53,6 +53,8 @@ ja:
       title: 過去の投稿一覧
     show:
       title: 投稿詳細
+    likes:
+      title: いいね済み投稿一覧
   likes:
     create:
       success: いいねしました
