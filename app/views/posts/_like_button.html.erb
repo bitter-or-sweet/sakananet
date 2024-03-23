@@ -1,5 +1,5 @@
 <% if current_user.like?(post) %>
-  <%= render 'unlike', { post: post } %>
+  <%= render 'unlike', { post: post, return_to: return_to } %>
 <% else %>
-  <%= render 'like', { post: post } %>
+  <%= render 'like', { post: post, return_to: return_to } %>
 <% end %>

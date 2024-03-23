@@ -18,10 +18,17 @@
         <%= image_tag 'post_placeholder.png', class: 'max-w-full max-h-full' %>
       <% end %>
     </div>
-    <div class="space-y-2">
-      <%= link_to post.title, post_path(post) %>
-      <P>お酒：<%= post.alcohol %></p>
-      <P>おつまみ：<%= post.appetizer %></p>
+    <div class="flex justify-between">
+      <div class="space-y-2">
+        <%= link_to post.title, post_path(post) %>
+        <P>お酒：<%= post.alcohol %></p>
+        <P>おつまみ：<%= post.appetizer %></p>
+      </div>
+      <div class="flex flex-col-reverse">
+        <% unless current_user.own?(post) %>
+          <%= render 'posts/like_button', { post: post, return_to: 'index' } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
