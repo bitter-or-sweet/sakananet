@@ -1,9 +1,15 @@
 <% content_for(:title, t('.title')) %>
 <div class="container px-5 pt-12 md:pt-24 pb-10 mx-auto">
   <h1 class="text-lg sm:text-2xl font-bold my-10 text-center"><%= t('.title') %></h1>
-  <div class="flex flex-wrap mt-10">
-    <% @posts.each do |post| %>
-      <%= render 'post', { post: post, return_to: 'index' } %>
-    <% end %>
-  </div>
+  <% if @posts.present? %>
+    <div class="flex flex-wrap mt-10">
+      <% @posts.each do |post| %>
+        <%= render 'post', { post: post, return_to: 'index' } %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="flex justify-center">
+      投稿がありません
+    </div>
+  <% end %>
 </div>
