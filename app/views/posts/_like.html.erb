@@ -1,0 +1,3 @@
+<%= link_to likes_path(post_id: post.id, return_to: return_to), id: "like-button-for-post-#{post.id}", class: "bg-point hover:shadow-lg rounded-full text-lg px-5 py-2", data: { turbo_method: :post } do %>
+  いいね<i class="fa-solid fa-champagne-glasses"></i>
+<% end %>
