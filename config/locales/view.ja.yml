@@ -53,6 +53,11 @@ ja:
       title: 過去の投稿一覧
     show:
       title: 投稿詳細
+  likes:
+    create:
+      success: いいねしました
+    destroy:
+      success: いいねを解除しました
   header:
     login: ログイン
     logout: ログアウト
