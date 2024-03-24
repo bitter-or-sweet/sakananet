@@ -4,7 +4,7 @@
   <% if @posts.present? %>
     <div class="flex flex-wrap mt-10">
       <% @posts.each do |post| %>
-        <%= render 'post', { post: post, return_to: 'index' } %>
+        <%= render 'post', post: post %>
       <% end %>
     </div>
   <% else %>
