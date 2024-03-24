@@ -27,7 +27,7 @@
       <% if current_user.present? %>
         <div class="flex flex-col-reverse">
           <% unless current_user.own?(post) %>
-            <%= render 'posts/like_button', { post: post, return_to: return_to } %>
+            <%= render 'like_button', post: post %>
           <% end %>
         </div>
       <% end %>

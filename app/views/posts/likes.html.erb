@@ -4,7 +4,7 @@
   <% if @like_posts.present? %>
     <div class="flex flex-wrap mt-10">
       <% @like_posts.each do |post| %>
-        <%= render 'post', { post: post, return_to: 'liked_index' } %>
+        <%= render 'post', post: post %>
       <% end %>
     </div>
   <% else %>
