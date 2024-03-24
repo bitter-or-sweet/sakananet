@@ -6,15 +6,17 @@
       <%= image_tag @post.post_image.url, size: '500x400' %>
     </div>
     <div class="w-full md:w-1/2 pl-10">
-      <% if current_user.own?(@post) %>
-        <div class="flex justify-end space-x-5">
-          <%= link_to edit_post_path(@post) do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-          <% end %>
-          <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-            <i class="fa-regular fa-trash-can"></i>
-          <% end %>
-        </div>
+      <% if current_user.present? %>
+        <% if current_user.own?(@post) %>
+          <div class="flex justify-end space-x-5">
+            <%= link_to edit_post_path(@post) do %>
+              <i class="fa-regular fa-pen-to-square"></i>
+            <% end %>
+            <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
       <ul class="space-y-2 text-lg mb-5">
         <li><%= @post.title %></li>
@@ -22,12 +24,14 @@
         <li>おつまみ：<%= @post.appetizer %>（<%= @post.appetizer_genre.genre %>）</li>
       </ul>
       <div class="flex justify-start">
-        <% unless current_user.own?(@post) %>
-          <%= render 'posts/like_button', { post: @post, return_to: 'show' } %>
-        <% end %>
-        <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
-            class: "bg-slate-950 text-white py-2 px-5 hover:shadow-lg rounded-full text-lg mx-4"  do %>
-          <i class="fa-brands fa-x-twitter mr-2"></i>で共有
+        <% if current_user.present? %>
+          <% unless current_user.own?(@post) %>
+            <%= render 'posts/like_button', { post: @post, return_to: 'show' } %>
+          <% end %>
+          <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+              class: "bg-slate-950 text-white py-2 px-5 hover:shadow-lg rounded-full text-lg mx-4"  do %>
+            <i class="fa-brands fa-x-twitter mr-2"></i>で共有
+          <% end %>
         <% end %>
       </div>
       <div class="flex justify-start my-5">
