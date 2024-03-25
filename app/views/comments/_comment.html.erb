@@ -14,9 +14,6 @@
     <%= simple_format(comment.body) %>
     <% if current_user.own?(comment) %>
       <div class="flex flex-row items-center space-x-5">
-        <%= link_to '#' do %>
-          <i class="fa-regular fa-pen-to-square"></i>
-        <% end %>
         <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
           <i class="fa-regular fa-trash-can"></i>
         <% end %>
