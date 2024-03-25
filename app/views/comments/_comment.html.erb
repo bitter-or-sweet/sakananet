@@ -1,4 +1,4 @@
-<div class="border border-gray-500 bg-white p-4 rounded-lg mb-5">
+<div class="border border-gray-500 bg-white p-4 rounded-lg mb-5", id="comment-<%= comment.id %>">
   <div class="flex flex-row justify-between">
     <div class="flex flex-row items-center">
       <% if comment.user.avatar? %>
@@ -17,7 +17,7 @@
         <%= link_to '#' do %>
           <i class="fa-regular fa-pen-to-square"></i>
         <% end %>
-        <%= link_to '#' do %>
+        <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
           <i class="fa-regular fa-trash-can"></i>
         <% end %>
       </div>
