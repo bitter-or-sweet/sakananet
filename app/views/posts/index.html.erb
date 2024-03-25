@@ -12,4 +12,7 @@
       投稿がありません
     </div>
   <% end %>
+  <% if @posts.total_pages > 1 %>
+    <%= paginate @posts %>
+  <% end %>
 </div>
