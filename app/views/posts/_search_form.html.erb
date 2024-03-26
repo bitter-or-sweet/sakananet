@@ -1,0 +1,6 @@
+<%= search_form_for q, url: url do |f| %>
+  <div class="flex flex-row">
+    <%= f.search_field :title_or_body_cont, class: 'input border-gray-400 w-full', placeholder: t('defaults.search_word') %>
+    <%= f.submit class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-full w-1/3 py-3' %>
+  </div>
+<% end %>
