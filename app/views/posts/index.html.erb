@@ -12,4 +12,9 @@
       投稿がありません
     </div>
   <% end %>
+  <div class="flex justify-center">
+    <% if @posts.total_pages > 1 %>
+      <%= paginate @posts %>
+    <% end %>
+  </div>
 </div>

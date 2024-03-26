@@ -1,0 +1,9 @@
+<% if page.current? %>
+  <span class="page current">
+    <%= link_to_if page.current?, page, url, { remote: remote, rel: page.rel, class: "join-item btn btn-outline btn-active" } %>
+  </span>
+<% else %>
+  <span class="page">
+    <%= link_to_unless page.current?, page, url, { remote: remote, rel: page.rel, class: "join-item btn btn-outline" } %>
+  </span>
+<% end %>
