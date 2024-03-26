@@ -1,6 +1,17 @@
-<%= search_form_for q, url: url do |f| %>
-  <div class="flex flex-row">
-    <%= f.search_field :title_or_body_cont, class: 'input border-gray-400 w-full', placeholder: t('defaults.search_word') %>
-    <%= f.submit class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-full w-1/3 py-3' %>
+<%= search_form_for q, url: url, class: 'flex flex-wrap w-full justify-center' do |f| %>
+  <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
+    <%= f.label :title_or_body_cont, 'キーワード' %>
+    <%= f.search_field :title_or_body_cont, class: 'input border-gray-400 w-full', placeholder: 'キーワードを入力' %>
+  </div>
+  <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
+    <%= f.label :alcohol_genre_id_eq, 'お酒のジャンル' %>
+    <%= f.collection_select :alcohol_genre_id_eq, AlcoholGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
+  </div>
+  <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
+    <%= f.label :alcohol_genre_id_eq, 'おつまみのジャンル' %>
+    <%= f.collection_select :appetizer_genre_id_eq, AppetizerGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
+  </div>
+  <div class="flex justify-center items-end w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
+    <%= f.submit class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-full px-20 py-3 h-12' %>
   </div>
 <% end %>
