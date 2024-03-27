@@ -21,8 +21,18 @@
     <div class="flex justify-between">
       <div class="space-y-2">
         <%= link_to post.title, post_path(post) %>
-        <P>お酒：<%= post.alcohol %></p>
-        <P>おつまみ：<%= post.appetizer %></p>
+        <div class="flex flex-row">
+          お酒：<%= post.alcohol %>
+          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
+            <%= post.alcohol_genre.genre %>
+          </div>
+        </div>
+        <div class="flex flex-row">
+          おつまみ：<%= post.appetizer %></p>
+          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
+            <%= post.appetizer_genre.genre %>
+          </div>
+        </div>
       </div>
       <% if current_user.present? %>
         <div class="flex flex-col-reverse">

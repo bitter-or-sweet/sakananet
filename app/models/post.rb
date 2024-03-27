@@ -11,4 +11,12 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   mount_uploader :post_image, PostImageUploader
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "body", "alcohol", "appetizer"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["user", "alcohol_genre", "appetizer_genre", "comments", "likes"]
+  end
 end
