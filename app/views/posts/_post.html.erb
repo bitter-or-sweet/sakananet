@@ -20,15 +20,15 @@
     </div>
     <div class="flex justify-between">
       <div class="space-y-2">
-        <%= link_to post.title, post_path(post) %>
+        <%= link_to post.title, post_path(post), class: 'font-bold hover:text-yellow-400' %>
         <div class="flex flex-row">
-          お酒：<%= post.alcohol %>
+          <p class="font-bold mr-1">お酒：<%= post.alcohol %></p>
           <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
             <%= post.alcohol_genre.genre %>
           </div>
         </div>
         <div class="flex flex-row">
-          おつまみ：<%= post.appetizer %></p>
+          <p class="font-bold mr-1">おつまみ：<%= post.appetizer %></p>
           <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
             <%= post.appetizer_genre.genre %>
           </div>
