@@ -1,6 +1,6 @@
 <%= search_form_for q, url: url, class: 'flex flex-wrap w-full justify-center' do |f| %>
   <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
-    <%= f.label :title_or_body_cont, 'キーワード' %>
+    <%= f.label :title_or_body_cont, 'キーワード（タイトル・本文）' %>
     <%= f.search_field :title_or_body_cont, class: 'input border-gray-400 w-full', placeholder: 'キーワードを入力' %>
   </div>
   <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
