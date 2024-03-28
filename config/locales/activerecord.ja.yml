@@ -11,6 +11,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         avatar: プロフィール画像
+        profile: プロフィール
       post:
         title: タイトル
         body: 本文

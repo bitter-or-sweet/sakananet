@@ -8,9 +8,12 @@ ja:
       comment: コメントする
       password_reset: パスワードリセット
       password_change: パスワード変更
+      profile_change: 変更する
     label:
       email: メールアドレス
       password: パスワード
+      user:
+        profile: プロフィール
   defaults:
     message:
       created: "%{item}を作成しました"
@@ -63,6 +66,8 @@ ja:
   profiles:
     show:
       title: マイページ
+    edit:
+      title: プロフィール設定
   header:
     login: ログイン
     logout: ログアウト

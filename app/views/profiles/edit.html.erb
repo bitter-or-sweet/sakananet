@@ -1,0 +1,28 @@
+<% content_for(:title, t('.title')) %>
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-10 text-center"><%= t('.title') %></h1>
+  <%= form_with model: @user, url: profile_path do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-5">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'input border-gray-400 w-full' %>
+    </div>
+    <div class="mb-5">
+      <%= f.label :profile %>
+      <%= f.text_area :profile, rows: 5, class: 'input border-gray-400 w-full', style: 'height: 150px;' %>
+    </div>
+    <div class="flex md:justify-center mb-5">
+      <div class="w-full md:w-1/2">
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar, class: 'w-full', id: 'input' %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+      <div class="flex justify-end w-full md:w-1/2">
+        <%= image_tag @user.avatar.url, id: 'preview', size: '200x100' %>
+      </div>
+    </div>
+    <div class="sm-text-lg font-semibold text-center">
+      <%= f.submit t('helpers.submit.profile_change'), class: 'bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full w-1/3 py-3' %>
+    </div>
+  <% end %>
+</div>
