@@ -60,6 +60,9 @@ ja:
       success: いいねしました
     destroy:
       success: いいねを解除しました
+  profiles:
+    show:
+      title: マイページ
   header:
     login: ログイン
     logout: ログアウト
