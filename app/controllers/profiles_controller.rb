@@ -7,9 +7,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path, notice: t('defaults.message.updated', item: User.model_name.human)
+      redirect_to profile_path, notice: t('defaults.message.updated', item: t('activerecord.attributes.user.profile'))
     else
-      flash.now['alert'] = t('defaults.message.not_updated', item: User.model_name.human)
+      flash.now['alert'] = t('defaults.message.not_updated', item: t('activerecord.attributes.user.profile'))
       render :edit, status: :unprocessable_entity
     end
   end
