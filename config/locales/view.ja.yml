@@ -38,6 +38,8 @@ ja:
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
+    show:
+      title: プロフィールページ
   password_resets:
     new:
       title: パスワードリセット
@@ -50,6 +52,7 @@ ja:
   posts:
     index:
       title: 投稿一覧
+      user_posts_title: 過去の投稿一覧
     new:
       title: 投稿フォーム
     posted:
@@ -66,7 +69,6 @@ ja:
   profiles:
     show:
       title: マイページ
-      other_title: プロフィールページ
     edit:
       title: プロフィール設定
   header:
