@@ -66,6 +66,7 @@ ja:
   profiles:
     show:
       title: マイページ
+      other_title: プロフィールページ
     edit:
       title: プロフィール設定
   header:

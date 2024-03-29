@@ -7,7 +7,7 @@
         <% else %>
           <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
         <% end %>
-        <%= link_to post.user.name, '#' %>
+        <%= link_to post.user.name, post.user == current_user ? profile_path : user_path(post.user) %>
       </div>
       <%= l post.created_at, format: :long %>
     </div>
