@@ -15,7 +15,8 @@ class PostsController < ApplicationController
   end
 
   def posted
-    @posted_posts = current_user.posts
+    @q = current_user.posts.ransack(params[:q])
+    @posted_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new

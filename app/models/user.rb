@@ -14,6 +14,10 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id]
+  end
+
   def own?(object)
     object.user_id == id
   end
