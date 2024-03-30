@@ -39,7 +39,7 @@ ja:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
     show:
-      title: プロフィールページ
+      title: プロフィール
   password_resets:
     new:
       title: パスワードリセット

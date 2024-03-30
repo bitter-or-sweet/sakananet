@@ -1,29 +1,22 @@
 <% content_for(:title, t('.title')) %>
-<div class="container px-16 pt-12 md:pt-24 pb-10 mx-auto">
+<div class="mx-auto w-3/4 max-w-screen-sm pt-12 md:pt-24 pb-10">
   <h1 class="text-lg sm:text-2xl font-bold my-10 text-center"><%= t('.title') %></h1>
-  <div class="flex flex-col-reverse justify-center sm:flex-row">
-    <div class="flex justify-center border border-gray-500 bg-white p-8 rounded-lg mt-10 sm:mt-0 sm:mr-20">
-      <ul class="space-y-10">
-        <li><%= link_to '過去の投稿一覧', user_posts_path(@user) %></li>
-        <li><%= link_to 'いいね済み一覧', likes_posts_path %></li>
-      </ul>
+  <div class="flex justify-start items-center mb-5">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url, class:"rounded-[5px] w-20 h-20 mr-10" %>
+    <% else %>
+      <%= image_tag 'default.jpg', class:"rounded-[5px] w-20 h-20 mr-5" %>
+    <% end %>
+    <div class="text-2xl">
+      <%= @user.name %>
     </div>
-    <div class="w-full sm:w-1/3">
-      <div class="flex justify-start items-center mb-5">
-        <% if @user.avatar? %>
-          <%= image_tag @user.avatar.url, class:"rounded-[5px] w-20 h-20 mr-5" %>
-        <% else %>
-          <%= image_tag 'default.jpg', class:"rounded-[5px] w-20 h-20 mr-5" %>
-        <% end %>
-        <div class="text-2xl">
-          <%= @user.name %>
-        </div>
-      </div>
-      <% if @user.profile? %>
-        <%= @user.profile %>
-      <% else %>
-        プロフィール未入力
-      <% end %>
-    </div>
+  </div>
+  <% if @user.profile? %>
+    <%= @user.profile %>
+  <% else %>
+    プロフィール未入力
+  <% end %>
+  <div class="mt-10">
+    <%= link_to '過去の投稿一覧を見る', user_posts_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500' %>
   </div>
 </div>
