@@ -4,8 +4,8 @@
     <%= f.label :title, 'タイトル' %>
     <%= f.text_field :title, class: 'input border-gray-400 w-full' %>
   </div>
-  <div class="flex md:justify-center mb-5">
-    <div class="w-full md:w-1/2">
+  <div class="flex flex-col sm:flex-row mb-5">
+    <div class="w-full md:w-1/2 mb-5">
       <%= f.label :alcohol, 'お酒' %>
       <%= f.text_field :alcohol, class: 'input border-gray-400 w-full' %>
     </div>
@@ -14,8 +14,8 @@
       <%= f.select :alcohol_genre_id, AlcoholGenre.all.map { |genre| [genre.genre, genre.id] }, { include_blank: "未選択" }, class: 'border border-gray-400 rounded-lg w-full px-5 py-3' %>
     </div>
   </div>
-  <div class="flex md:justify-center mb-5">
-    <div class="w-full md:w-1/2">
+  <div class="flex flex-col sm:flex-row mb-5">
+    <div class="w-full md:w-1/2 mb-5">
       <%= f.label :appetizer, 'おつまみ' %>
       <%= f.text_field :appetizer, class: 'input border-gray-400 w-full' %>
     </div>
@@ -28,13 +28,13 @@
     <%= f.label :body, '本文' %>
     <%= f.text_area :body, class: 'input border-gray-400 w-full' %>
   </div>
-  <div class="flex md:justify-center mb-5">
-    <div class="w-full md:w-1/2">
+  <div class="flex flex-col sm:flex-row mb-5">
+    <div class="w-full md:w-1/2 mb-5">
       <%= f.label :post_image %>
       <%= f.file_field :post_image, class: 'w-full', id: 'input' %>
       <%= f.hidden_field :post_image_cache %>
     </div>
-    <div class="flex justify-end w-full md:w-1/2">
+    <div class="flex sm:justify-end w-full md:w-1/2">
       <%= image_tag post.post_image.url, id: 'preview', size: '200x100' %>
     </div>
   </div>

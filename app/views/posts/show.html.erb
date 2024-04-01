@@ -1,28 +1,46 @@
 <% content_for(:title, @post.title) %>
-<div class="container px-5 pt-12 md:pt-24 pb-10 mx-auto">
+<div class="mx-auto w-5/6 max-w-screen-lg">
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
   <div class="flex flex-wrap md:justify-between mb-5">
-    <div class="flex justify-end w-full md:w-1/2 pr-10">
-      <%= image_tag @post.post_image.url, size: '500x400' %>
+    <div class="flex justify-center w-full md:w-1/2 md:p-5">
+      <%= image_tag @post.post_image.url, size: '300x300' %>
     </div>
-    <div class="w-full md:w-1/2 pl-10">
-      <% if current_user.present? %>
-        <% if current_user.own?(@post) %>
-          <div class="flex justify-end space-x-5">
-            <%= link_to edit_post_path(@post) do %>
-              <i class="fa-regular fa-pen-to-square"></i>
-            <% end %>
-            <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-              <i class="fa-regular fa-trash-can"></i>
-            <% end %>
-          </div>
+    <div class="w-full md:w-1/2">
+      <div class="flex justify-between items-center">
+        <div class="flex justify-start my-5">
+          <% if @post.user.avatar? %>
+            <%= image_tag @post.user.avatar.url, class:"rounded-[5px] w-7 h-7 mr-5" %>
+          <% else %>
+            <%= image_tag 'default.jpg', class:"rounded-[5px] w-7 h-7 mr-5" %>
+          <% end %>
+          <%= @post.user.name %>
+        </div>
+        <% if current_user.present? %>
+          <% if current_user.own?(@post) %>
+            <div class="flex space-x-5">
+              <%= link_to edit_post_path(@post) do %>
+                <i class="fa-regular fa-pen-to-square fa-lg"></i>
+              <% end %>
+              <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+                <i class="fa-regular fa-trash-can fa-lg"></i>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-      <ul class="space-y-2 text-lg mb-5">
-        <li><%= @post.title %></li>
-        <li>お酒：<%= @post.alcohol %>（<%= @post.alcohol_genre.genre %>）</li>
-        <li>おつまみ：<%= @post.appetizer %>（<%= @post.appetizer_genre.genre %>）</li>
-      </ul>
+      </div>
+      <div class="space-y-2 text-lg mb-5">
+        <%= link_to @post.title, post_path(@post), class: 'font-bold hover:text-yellow-400' %>
+        <p class="font-bold mr-1">お酒：<%= @post.alcohol %></p>
+        <p class="font-bold mr-1">おつまみ：<%= @post.appetizer %></p>
+        <div class="flex flex-row">
+          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2 mr-1">
+          <%= @post.alcohol_genre.genre %>
+          </div>
+          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
+            <%= @post.appetizer_genre.genre %>
+          </div>
+        </div>
+      </div>
       <div class="flex justify-start">
         <% if current_user.present? %>
           <% unless current_user.own?(@post) %>
@@ -34,18 +52,9 @@
           <% end %>
         <% end %>
       </div>
-      <div class="flex justify-start my-5">
-        <% if @post.user.avatar? %>
-          <%= image_tag @post.user.avatar.url, class:"rounded-[5px] w-7 h-7 mr-5" %>
-        <% else %>
-          <%= image_tag 'default.jpg', class:"rounded-[5px] w-7 h-7 mr-5" %>
-        <% end %>
-        <%= @post.user.name %>
-      </div>
-      <%= @post.body %>
     </div>
   </div>
-  <div class="md:w-2/3 mx-auto">
+  <div class="w-full space-y-2">
     <%= render 'comments/form', { post: @post, comment: @comment } %>
     <%= render 'comments/comments', { comments: @comments } %>
   </div>

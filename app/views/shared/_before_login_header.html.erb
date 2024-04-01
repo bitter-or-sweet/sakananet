@@ -1,10 +1,19 @@
-<header class="bg-theme bg-opacity-50">
-  <div class="container mx-auto flex justify-between items-center px-5 py-5 w-full">
-    <%= link_to '酒菜ネット', root_path, class:"text-3xl font-bold" %>
-    <div class="space-x-14 items-center text-lg font-bold">
+<header class="mx-auto flex h-20 items-center justify-between p-6 bg-theme bg-opacity-50 w-full">
+  <%= link_to '酒菜ネット', root_path, class:'text-3xl font-bold' %>
+  <button id="button" type="button" class="z-10 absolute top-6 right-6 md:hidden">
+    <i id="bars" class="fa-solid fa-bars fa-2x"></i>
+    <i id="xmark" class="fa-solid fa-xmark fa-2x text-gray-500 hidden"></i>
+  </button>
+  <nav>
+    <ul id="menu" class="fixed top-0 left-0 z-0 w-full bg-point text-center font-bold text-gray-500 translate-x-full transition ease-linear">
+      <li class="p-3"><%= link_to t('header.post_index'), posts_path %></li>
+      <li class="p-3"><%= link_to t('header.sign_up'), new_user_path %></li>
+      <li class="p-3"><%= link_to t('header.login'), login_path %></li>
+    </ul>
+    <div class="space-x-14 items-center text-lg font-bold md:flex hidden md:block">
       <%= link_to t('header.post_index'), posts_path %>
       <%= link_to t('header.sign_up'), new_user_path %>
       <%= link_to t('header.login'), login_path %>
     </div>
-  </div>
+  </nav>
 </header>

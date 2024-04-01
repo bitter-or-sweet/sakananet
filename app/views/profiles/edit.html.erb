@@ -11,13 +11,13 @@
       <%= f.label :profile %>
       <%= f.text_area :profile, rows: 5, class: 'input border-gray-400 w-full', style: 'height: 150px;' %>
     </div>
-    <div class="flex md:justify-center mb-5">
-      <div class="w-full md:w-1/2">
+    <div class="flex flex-col sm:flex-row mb-5">
+      <div class="w-full md:w-1/2 mb-5">
         <%= f.label :avatar %>
         <%= f.file_field :avatar, class: 'w-full', id: 'input' %>
         <%= f.hidden_field :avatar_cache %>
       </div>
-      <div class="flex justify-end w-full md:w-1/2">
+      <div class="flex sm:justify-end w-full md:w-1/2">
         <%= image_tag @user.avatar.url, id: 'preview', size: '200x100' %>
       </div>
     </div>
