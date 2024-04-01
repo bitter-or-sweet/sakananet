@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-start">
+      <div class="flex justify-start items-center">
         <% if current_user.present? %>
           <% unless current_user.own?(@post) %>
             <%= render 'posts/like_button', post: @post %>
