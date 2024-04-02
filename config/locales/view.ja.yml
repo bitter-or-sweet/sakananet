@@ -59,6 +59,8 @@ ja:
       title: 過去の投稿一覧
     show:
       title: 投稿詳細
+    edit:
+      title: 投稿編集
     likes:
       title: いいね済み投稿一覧
   likes:
