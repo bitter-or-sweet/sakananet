@@ -21,7 +21,7 @@
         </div>
       </div>
       <% if @user.profile? %>
-        <%= @user.profile %>
+        <%= simple_format(@user.profile) %>
       <% else %>
         プロフィール未入力
       <% end %>
