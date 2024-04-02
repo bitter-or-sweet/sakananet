@@ -1,56 +1,61 @@
 <% content_for(:title, @post.title) %>
-<div class="mx-auto w-5/6 max-w-screen-lg">
+<div class="mx-auto w-3/4 lg:w-5/6 max-w-screen-lg">
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
-  <div class="flex flex-wrap md:justify-between mb-5">
-    <div class="flex justify-center w-full md:w-1/2 md:p-5">
-      <%= image_tag @post.post_image.url, size: '300x300' %>
+  <div class="flex flex-wrap md:justify-between mb-5 lg:pr-10 items-center">
+    <div class="flex justify-center w-full lg:w-1/2 lg:p-5">
+      <%= image_tag @post.post_image.url, size: '400x300', class:'mb-5' %>
     </div>
-    <div class="w-full md:w-1/2">
-      <div class="flex justify-between items-center">
-        <div class="flex justify-start my-5">
-          <% if @post.user.avatar? %>
-            <%= image_tag @post.user.avatar.url, class:"rounded-[5px] w-7 h-7 mr-5" %>
-          <% else %>
-            <%= image_tag 'default.jpg', class:"rounded-[5px] w-7 h-7 mr-5" %>
+    <div class="w-full lg:max-w-md lg:w-1/2">
+      <div class="border bg-amber-50 shadow-2xl p-4 rounded-lg">
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex justify-start items-center">
+            <% if @post.user.avatar? %>
+              <%= image_tag @post.user.avatar.url, class:"rounded-[5px] w-10 h-10 mr-5" %>
+            <% else %>
+              <%= image_tag 'default.jpg', class:"rounded-[5px] w-10 h-10 mr-5" %>
+            <% end %>
+            <%= link_to @post.user.name, @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' %>
+          </div>
+          <% if current_user.present? %>
+            <% if current_user.own?(@post) %>
+              <div class="flex space-x-5">
+                <%= link_to edit_post_path(@post) do %>
+                  <i class="fa-regular fa-pen-to-square fa-lg hover:text-yellow-400"></i>
+                <% end %>
+                <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+                  <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
-          <%= @post.user.name %>
         </div>
-        <% if current_user.present? %>
-          <% if current_user.own?(@post) %>
-            <div class="flex space-x-5">
-              <%= link_to edit_post_path(@post) do %>
-                <i class="fa-regular fa-pen-to-square fa-lg"></i>
-              <% end %>
-              <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-                <i class="fa-regular fa-trash-can fa-lg"></i>
-              <% end %>
+        <div class="space-y-2 text-center">
+          <p class="font-bold border-dotted border-b-4 border-point"><%= @post.title %>
+          <p class="font-bold text-left">お酒：<%= @post.alcohol %></p>
+          <p class="font-bold text-left">おつまみ：<%= @post.appetizer %></p>
+          <p class="text-left text-sm"><%= @post.body %></p>
+          <div class="flex justify-between">
+            <div class="flex flex-row items-center">
+              <div class="border border-gray-500 rounded-[10px] text-base text-gray-500 px-2 mr-1 h-7">
+                <%= @post.alcohol_genre.genre %>
+              </div>
+              <div class="border border-gray-500 rounded-[10px] text-base text-gray-500 px-2 h-7">
+                <%= @post.appetizer_genre.genre %>
+              </div>
             </div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="space-y-2 text-lg mb-5">
-        <%= link_to @post.title, post_path(@post), class: 'font-bold hover:text-yellow-400' %>
-        <p class="font-bold mr-1">お酒：<%= @post.alcohol %></p>
-        <p class="font-bold mr-1">おつまみ：<%= @post.appetizer %></p>
-        <div class="flex flex-row">
-          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2 mr-1">
-          <%= @post.alcohol_genre.genre %>
           </div>
-          <div class="border border-gray-500 rounded-[10px] text-gray-500 px-2">
-            <%= @post.appetizer_genre.genre %>
+          <div class="flex justify-end items-center">
+            <% if current_user.present? %>
+              <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+                  class: "bg-slate-950 hover:bg-slate-700 text-white py-1 px-2 rounded-[5px] text-lg mr-5" do %>
+                <i class="fa-brands fa-x-twitter"></i>
+              <% end %>
+              <% unless current_user.own?(@post) %>
+                <%= render 'posts/like_button', post: @post %>
+              <% end %>
+            <% end %>
           </div>
         </div>
-      </div>
-      <div class="flex justify-start items-center">
-        <% if current_user.present? %>
-          <% unless current_user.own?(@post) %>
-            <%= render 'posts/like_button', post: @post %>
-          <% end %>
-          <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
-              class: "bg-slate-950 hover:bg-slate-700 text-white py-2 px-5 rounded-full text-lg mx-8"  do %>
-            <i class="fa-brands fa-x-twitter mr-2"></i>で共有
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>
