@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
-  validates :title, presence: true, length: { maximum: 255 }
-  validates :body, presence: true, length: { maximum: 65_535 }
-  validates :alcohol, presence: true, length: { maximum: 255 }
-  validates :appetizer, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: 20 }
+  validates :body, presence: true, length: { maximum: 100 }
+  validates :alcohol, presence: true, length: { maximum: 20 }
+  validates :appetizer, presence: true, length: { maximum: 20 }
 
   belongs_to :user
   belongs_to :alcohol_genre
