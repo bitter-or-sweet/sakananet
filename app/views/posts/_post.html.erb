@@ -21,8 +21,8 @@
     <div class="flex justify-between">
       <div class="space-y-2">
         <%= link_to post.title, post_path(post), class: 'font-bold hover:text-yellow-400' %>
-        <p class="font-bold mr-1">お酒：<%= post.alcohol %></p>
-        <p class="font-bold mr-1">おつまみ：<%= post.appetizer %></p>
+        <p class="font-bold mr-1">お酒 <i class="fa-solid fa-wine-glass"></i>：<%= post.alcohol %></p>
+        <p class="font-bold mr-1">おつまみ <i class="fa-solid fa-utensils"></i>：<%= post.appetizer %></p>
         <div class="flex flex-row">
           <div class="border border-gray-500 bg-white rounded-[10px] text-gray-500 px-2 mr-1">
             <%= post.alcohol_genre.genre %>
