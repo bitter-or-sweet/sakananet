@@ -1,24 +1,32 @@
-<div class="border border-gray-500 bg-white p-4 rounded-lg mb-5", id="comment-<%= comment.id %>">
-  <div class="flex flex-row justify-between">
-    <div class="flex flex-row items-center">
+<% if comment.user == current_user %>
+  <div class="chat chat-end" id="comment-<%= comment.id %>">
+<% else %>
+  <div class="chat chat-start" id="comment-<%= comment.id %>">
+<% end %>
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-[5px]">
       <% if comment.user.avatar? %>
-        <%= image_tag comment.user.avatar.url, class: 'rounded-[10px] h-7 w-7 border mr-2' %>
+        <%= image_tag comment.user.avatar.url %>
       <% else %>
-        <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
+        <%= image_tag 'default.jpg' %>
       <% end %>
-      <%= link_to comment.user.name, '#' %>
     </div>
-    <%= l comment.created_at, format: :long %>
   </div>
-  <div class="flex flex-row justify-between">
+  <div class="chat-header">
+    <%= link_to comment.user.name, comment.user == current_user ? profile_path : user_path(comment.user), class: 'hover:text-yellow-400' %>
+    <time class="text-xs opacity-50">
+      <%= l comment.created_at, format: :long %>
+    </time>
+  </div>
+  <div class="chat-bubble">
     <%= simple_format(comment.body) %>
+  </div>
+  <div class="chat-footer">
     <% if current_user.present? %>
       <% if current_user.own?(comment) %>
-        <div class="flex flex-row items-center space-x-5">
-          <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-            <i class="fa-regular fa-trash-can"></i>
-          <% end %>
-        </div>
+        <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+          <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
+        <% end %>
       <% end %>
     <% end %>
   </div>

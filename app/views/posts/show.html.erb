@@ -31,9 +31,9 @@
         </div>
         <div class="space-y-2 text-center">
           <p class="font-bold border-dotted border-b-4 border-point"><%= @post.title %>
-          <p class="font-bold text-left">お酒：<%= @post.alcohol %></p>
-          <p class="font-bold text-left">おつまみ：<%= @post.appetizer %></p>
-          <p class="text-left text-sm"><%= @post.body %></p>
+          <p class="font-bold text-left">お酒 <i class="fa-solid fa-wine-glass"></i>：<%= @post.alcohol %></p>
+          <p class="font-bold text-left">おつまみ <i class="fa-solid fa-utensils"></i>：<%= @post.appetizer %></p>
+          <%= simple_format(@post.body, { class: 'text-left text-sm' }, wrapper_tag: "div") %>
           <div class="flex justify-between">
             <div class="flex flex-row items-center">
               <div class="border border-gray-500 rounded-[10px] text-base text-gray-500 px-2 mr-1 h-7">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="w-full space-y-2">
-    <%= render 'comments/form', { post: @post, comment: @comment } %>
     <%= render 'comments/comments', { comments: @comments } %>
+    <%= render 'comments/form', { post: @post, comment: @comment } %>
   </div>
 </div>
