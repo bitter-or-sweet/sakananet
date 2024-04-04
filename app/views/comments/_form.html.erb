@@ -1,5 +1,4 @@
 <div id="comment-form">
-  <h1 class="flex justify-center font-bold text-base sm:text-xl mb-10">この投稿へのコメント</h1>
   <%= form_with model: comment, url: post_comments_path(post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="flex flex-wrap md:justify-between">

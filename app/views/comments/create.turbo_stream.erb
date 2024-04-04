@@ -3,7 +3,7 @@
     <%= render 'comments/form', comment: @comment, post: @comment.post %>
   <% end %>
 <% else %>
-  <%= turbo_stream.prepend 'table-comment' do %>
+  <%= turbo_stream.append 'table-comment' do %>
     <%= render 'comments/comment', comment: @comment %>
   <% end %>
   <%= turbo_stream.replace 'comment-form' do %>
