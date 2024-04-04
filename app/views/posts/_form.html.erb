@@ -31,7 +31,7 @@
   <div class="flex flex-col sm:flex-row mb-5">
     <div class="w-full md:w-1/2 mb-5">
       <%= f.label :post_image %>
-      <%= f.file_field :post_image, class: 'w-full', id: 'input' %>
+      <%= f.file_field :post_image, class: 'file-input file-input-bordered w-full max-w-xs' %>
       <%= f.hidden_field :post_image_cache %>
     </div>
     <div class="flex sm:justify-end w-full md:w-1/2">
