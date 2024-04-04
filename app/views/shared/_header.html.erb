@@ -1,5 +1,7 @@
 <header class="mx-auto flex h-20 items-center justify-between p-6 bg-theme bg-opacity-50 w-full">
-  <%= link_to '酒菜ネット', root_path, class:'text-3xl font-bold hover:text-gray-500' %>
+  <%= link_to root_path do %>
+    <%= image_tag 'top.png' %>
+  <% end %>
   <button id="button" type="button" class="z-10 absolute top-6 right-6 md:hidden">
     <i id="bars" class="fa-solid fa-bars fa-2x hover:text-gray-500"></i>
     <i id="xmark" class="fa-solid fa-xmark fa-2x hover:text-gray-500 hidden"></i>
