@@ -22,7 +22,7 @@
     <div class="flex flex-col sm:flex-row mb-5">
       <div class="w-full md:w-1/2 mb-5">
         <%= f.label :avatar %>
-        <%= f.file_field :avatar, class: 'file-input file-input-bordered w-full max-w-xs' %>
+        <%= f.file_field :avatar, class: 'file-input file-input-bordered w-full max-w-xs', id: 'input' %>
         <%= f.hidden_field :avatar_cache %>
       </div>
       <div class="flex sm:justify-end w-full md:w-1/2">
