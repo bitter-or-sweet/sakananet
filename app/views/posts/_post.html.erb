@@ -13,9 +13,13 @@
     </div>
     <div class="flex items-center justify-center w-full h-64 ">
       <% if post.post_image? %>
-        <%= image_tag post.post_image.url, class: 'max-w-full max-h-full' %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_image.url, class: 'max-w-full max-h-full' %>
+        <% end %>
       <% else %>
-        <%= image_tag 'post_placeholder.png', class: 'max-w-full max-h-full' %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag 'post_placeholder.png', class: 'max-w-full max-h-full' %>
+        <% end %>
       <% end %>
     </div>
     <div class="flex justify-between">
