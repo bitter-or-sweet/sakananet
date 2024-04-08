@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if Rails.env.production? %>
+      <%= render 'layouts/google_analytics' %>
+    <% end %>
+
     <title><%= page_title(yield(:title)) %></title>
     <script src="https://kit.fontawesome.com/773b0f9018.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1">
