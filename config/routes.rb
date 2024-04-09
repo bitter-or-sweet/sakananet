@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
+  get 'terms_of_use', to: 'tops#terms_of_use'
 end
