@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_132333) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_10_135233) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_132333) do
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "alcohols", force: :cascade do |t|
+    t.string "name"
+    t.bigint "alcohol_genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alcohol_genre_id"], name: "index_alcohols_on_alcohol_genre_id"
   end
 
   create_table "appetizer_genres", force: :cascade do |t|
@@ -34,6 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_132333) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -79,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_132333) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alcohols", "alcohol_genres"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
