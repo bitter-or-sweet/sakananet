@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_11_113043) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_124749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alcohol_appetizers", force: :cascade do |t|
+    t.bigint "alcohol_id", null: false
+    t.bigint "appetizer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alcohol_id"], name: "index_alcohol_appetizers_on_alcohol_id"
+    t.index ["appetizer_id"], name: "index_alcohol_appetizers_on_appetizer_id"
+  end
 
   create_table "alcohol_genres", force: :cascade do |t|
     t.string "genre"
@@ -107,6 +116,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_11_113043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alcohol_appetizers", "alcohols"
+  add_foreign_key "alcohol_appetizers", "appetizers"
   add_foreign_key "alcohols", "alcohol_genres"
   add_foreign_key "appetizers", "ingredients", column: "accent_ingredient_id"
   add_foreign_key "appetizers", "ingredients", column: "base_ingredient_id"
