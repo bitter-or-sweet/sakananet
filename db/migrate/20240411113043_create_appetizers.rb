@@ -6,6 +6,8 @@ class CreateAppetizers < ActiveRecord::Migration[7.0]
       t.references :base_ingredient, null: false, foreign_key: { to_table: :ingredients }, type: :bigint
       t.references :sub_ingredient, null: false, foreign_key: { to_table: :ingredients }, type: :bigint
       t.references :accent_ingredient, null: false, foreign_key: { to_table: :ingredients }, type: :bigint
+      t.references :alcohol, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

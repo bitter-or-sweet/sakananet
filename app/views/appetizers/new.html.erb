@@ -1,0 +1,15 @@
+<%= form_with(url: appetizers_path, method: :get) do |f| %>
+  <%= f.label :alcohol, 'お酒' %>
+  <%= f.collection_select :alcohol_id, Alcohol.all, :id, :name, { include_blank: '未選択' } %>
+
+  <%= f.label :base_ingredient, 'ベースの食材' %>
+  <%= f.collection_select :base_ingredient_id, Ingredient.where(category: 'base'), :id, :name, { include_blank: '未選択' } %>
+
+  <%= f.label :sub_ingredient, 'サブの食材' %>
+  <%= f.collection_select :sub_ingredient_id, Ingredient.where(category: 'sub'), :id, :name, { include_blank: '未選択' } %>
+
+  <%= f.label :accent_ingredient, 'アクセントの食材' %>
+  <%= f.collection_select :accent_ingredient_id, Ingredient.where(category: 'accent'), :id, :name, { include_blank: '未選択' } %>
+
+  <%= f.submit '提案してもらう' %>
+<% end %>
