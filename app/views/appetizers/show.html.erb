@@ -1,4 +1,18 @@
-<h1>回答</h1>
-<p><%= @appetizer.name %></p>
-<p><%= @appetizer.description %></p>
-<%= link_to '入力ページに戻る', new_appetizer_path %>
+<% content_for(:title, t('.title')) %>
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= @appetizer.name %></h1>
+  <p class="mb-10"><%= @appetizer.description %></p>
+  <div class="flex flex-col md:flex-row items-center">
+    <% if current_user.present? %>
+      <div class="flex justify-center w-full md:w-1/2">
+        <%= link_to "https://twitter.com/share?url=#{appetizer_url(@appetizer)}&text=#{ERB::Util.url_encode("「#{@appetizer.alcohol.name}」に合うおつまみは、「#{@appetizer.name}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+            class: 'bg-slate-950 hover:bg-slate-700 text-white font-bold rounded-full px-5 py-3' do %>
+          <i class="fa-brands fa-x-twitter"></i>で共有する
+        <% end %>
+      </div>
+    <% end %>
+    <div class="flex justify-center w-full md:w-1/2">
+      <%= link_to '組合せフォームに戻る', new_appetizer_path, class: 'bg-point font-bold hover:bg-yellow-400 shadow-xl my-10 rounded-full px-5 py-3' %>
+    </div>
+  </div>
+</div>

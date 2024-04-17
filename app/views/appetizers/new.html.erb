@@ -1,15 +1,9 @@
-<%= form_with model: @appetizer, url: appetizers_path do |f| %>
-  <%= f.label :alcohol, 'お酒' %>
-  <%= f.collection_select :alcohol_id, Alcohol.all, :id, :name, { include_blank: '未選択' } %>
-
-  <%= f.label :base_ingredient, 'ベースの食材' %>
-  <%= f.collection_select :base_ingredient_id, Ingredient.where(category: 'base'), :id, :name, { include_blank: '未選択' } %>
-
-  <%= f.label :sub_ingredient, 'サブの食材' %>
-  <%= f.collection_select :sub_ingredient_id, Ingredient.where(category: 'sub'), :id, :name, { include_blank: '未選択' } %>
-
-  <%= f.label :accent_ingredient, 'アクセントの食材' %>
-  <%= f.collection_select :accent_ingredient_id, Ingredient.where(category: 'accent'), :id, :name, { include_blank: '未選択' } %>
-
-  <%= f.submit '提案してもらう' %>
-<% end %>
+<% content_for(:title, t('.title')) %>
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
+  <div class="text-center mb-10">
+    <p>以下のフォームにお酒、食材を入力すると、</p>
+    <p>AIに組み合わせを提案してもらうことができます。</p>
+  </div>
+  <%= render 'form', appetizer: @appetizer %>
+</div>
