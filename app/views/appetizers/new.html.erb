@@ -1,4 +1,4 @@
-<%= form_with(url: appetizers_path, method: :get) do |f| %>
+<%= form_with model: @appetizer, url: appetizers_path do |f| %>
   <%= f.label :alcohol, 'お酒' %>
   <%= f.collection_select :alcohol_id, Alcohol.all, :id, :name, { include_blank: '未選択' } %>
 

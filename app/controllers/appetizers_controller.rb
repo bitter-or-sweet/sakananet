@@ -1,16 +1,17 @@
 class AppetizersController < ApplicationController
-  before_action :set_token, only: :index
-  before_action :set_ingredients_and_alcohol, only: :index
+  before_action :set_token, only: :create
 
-  def new; end
+  def new
+    @appetizer = Appetizer.new
+  end
 
-  def index
+  def create
     @client = OpenAI::Client.new(access_token: @api_key)
-    text_params
+    build_body(appetizer_params)
     response = @client.chat(
       parameters: {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: @query }],
+        messages: [{ role: "user", content: @query }]
       }
     )
 
@@ -24,15 +25,14 @@ class AppetizersController < ApplicationController
       @appetizer = current_user.appetizers.new(
         name: appetizer_name,
         description: appetizer_description,
-        alcohol_id: @alcohol.id,
-        base_ingredient_id: @base_ingredient.id,
-        sub_ingredient_id: @sub_ingredient.id,
-        accent_ingredient_id: @accent_ingredient.id
+        alcohol_id: appetizer_params[:alcohol_id],
+        base_ingredient_id: appetizer_params[:base_ingredient_id],
+        sub_ingredient_id: appetizer_params[:sub_ingredient_id],
+        accent_ingredient_id: appetizer_params[:accent_ingredient_id]
       )
       if @appetizer.save
-        flash.now[:notice] = "回答結果を取得しました"
+        redirect_to appetizer_path(@appetizer), notice: "回答結果を取得しました"
       else
-        Rails.logger.debug @appetizer.errors.full_messages.to_sentence
         flash.now[:alert] = "回答結果を取得できませんでした"
         render 'new', status: :unprocessable_entity
       end
@@ -42,26 +42,32 @@ class AppetizersController < ApplicationController
     end
   end
 
+  def show
+    @appetizer = Appetizer.find(params[:id])
+  end
+
   private
 
-  def text_params
-    @query = "#{@alcohol.name}に合うおつまみの名前と解説を、以下の食材を使って1つ提案してください。
+  def build_body(input)
+    alcohol = Alcohol.find(input[:alcohol_id])
+    base_ingredient = Ingredient.find(input[:base_ingredient_id])
+    sub_ingredient = Ingredient.find(input[:sub_ingredient_id])
+    accent_ingredient = Ingredient.find(input[:accent_ingredient_id])
+
+    @query = "#{alcohol.name}に合うおつまみの名前と解説を、以下の食材を使って1つ提案してください。
 
     # 食材
-    #{@base_ingredient.name}
-    #{@sub_ingredient.name}
-    #{@accent_ingredient.name}
+    #{base_ingredient.name}
+    #{sub_ingredient.name}
+    #{accent_ingredient.name}
 
-    #出力フォーマット
+    # 出力フォーマット
     おつまみ:おつまみの名前
     解説:おつまみの解説"
   end
 
-  def set_ingredients_and_alcohol
-    @alcohol = Alcohol.find(params[:alcohol_id])
-    @base_ingredient = Ingredient.find(params[:base_ingredient_id])
-    @sub_ingredient = Ingredient.find(params[:sub_ingredient_id])
-    @accent_ingredient = Ingredient.find(params[:accent_ingredient_id])
+  def appetizer_params
+    params.require(:appetizer).permit(:alcohol_id, :base_ingredient_id, :sub_ingredient_id, :accent_ingredient_id)
   end
 
   def set_token
