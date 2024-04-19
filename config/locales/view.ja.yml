@@ -76,6 +76,8 @@ ja:
   appetizers:
     new:
       title: AI組合せ
+    show:
+      title: 回答結果
   header:
     login: ログイン
     logout: ログアウト
