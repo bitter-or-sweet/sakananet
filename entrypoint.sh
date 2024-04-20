@@ -8,6 +8,6 @@ rm -f /app/tmp/pids/server.pid
 RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_ENV=production bundle exec rake assets:clean
 RAILS_ENV=production bundle exec rake db:migrate
-RAILS_ENV=production bundle exec rails db:seed
+RAILS_ENV=production bundle exec rake db:seed_fu
 
 exec "$@"
