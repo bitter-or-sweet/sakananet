@@ -11,7 +11,7 @@ class AppetizersController < ApplicationController
     build_body(appetizer_params)
     response = @client.chat(
       parameters: {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4-turbo",
         messages: [{ role: "user", content: @query }]
       }
     )
@@ -64,7 +64,10 @@ class AppetizersController < ApplicationController
 
     # 出力フォーマット
     おつまみ:おつまみの名前
-    解説:おつまみの解説"
+    解説:おつまみの解説
+
+    # 条件
+    300トークン以内で出力"
   end
 
   def appetizer_params
