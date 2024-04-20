@@ -3,6 +3,7 @@ class AppetizersController < ApplicationController
 
   def new
     @appetizer = Appetizer.new
+    @selected_genres = AlcoholGenre.where(genre: ["ビール", "焼酎", "日本酒", "ウイスキー", "ブランデー", "ワイン", "梅酒", "サワー", "酎ハイ"])
   end
 
   def create
