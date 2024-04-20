@@ -297,6 +297,9 @@ GEM
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (4.18.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
@@ -367,6 +370,7 @@ DEPENDENCIES
   rails-i18n
   ransack
   ruby-openai
+  seed-fu
   selenium-webdriver
   sorcery
   sprockets-rails
