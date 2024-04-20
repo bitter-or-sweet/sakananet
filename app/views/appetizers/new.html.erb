@@ -1,0 +1,9 @@
+<% content_for(:title, t('.title')) %>
+<div class="mx-auto w-5/6 max-w-screen-sm">
+  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
+  <div class="text-center mb-10">
+    <p>以下のフォームにお酒、食材を入力すると、</p>
+    <p>AIに組み合わせを提案してもらうことができます。</p>
+  </div>
+  <%= render 'form', appetizer: @appetizer %>
+</div>

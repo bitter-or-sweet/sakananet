@@ -1,5 +1,6 @@
 class AlcoholGenre < ApplicationRecord
   has_many :posts
+  has_many :alcohols
 
   validates :genre, presence: true
 
