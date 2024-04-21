@@ -12,7 +12,7 @@
       </div>
     <% end %>
     <div class="flex justify-center w-full md:w-1/2">
-      <%= link_to '組合せフォームに戻る', new_appetizer_path, class: 'bg-point font-bold hover:bg-yellow-400 shadow-xl my-10 rounded-full px-5 py-3' %>
+      <%= link_to "#{@appetizer.user.name}の組合せ一覧", user_appetizers_path(@appetizer.user), class: 'bg-point font-bold hover:bg-yellow-400 shadow-xl my-10 rounded-full px-5 py-3' %>
     </div>
   </div>
 </div>

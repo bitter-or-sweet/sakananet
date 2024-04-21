@@ -74,6 +74,8 @@ ja:
     edit:
       title: プロフィール設定
   appetizers:
+    index:
+      user_appetizers_title: 組合せ一覧
     new:
       title: AI組合せ
     show:
@@ -86,3 +88,4 @@ ja:
     create_post: 投稿する
     ai_combination: AI組合せ
     my_page: マイページ
+    create_appetizer: AI組合せ

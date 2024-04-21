@@ -1,6 +1,10 @@
 class AppetizersController < ApplicationController
   before_action :set_token, only: :create
 
+  def index
+    @appetizers = Appetizer.where(user_id: params[:user_id]).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
   def new
     @appetizer = Appetizer.new
     @selected_genres = AlcoholGenre.where(genre: ["ビール", "焼酎", "日本酒", "ウイスキー", "ブランデー", "ワイン", "梅酒", "サワー", "酎ハイ"])
