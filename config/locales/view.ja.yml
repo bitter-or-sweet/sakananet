@@ -74,6 +74,8 @@ ja:
     edit:
       title: プロフィール設定
   appetizers:
+    index:
+      user_appetizers_title: 組合せ一覧
     new:
       title: AI組合せ
     show:

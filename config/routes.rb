@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'tops#index'
   resources :users, only: %i[new create show] do
     resources :posts, only: [:index], on: :member
+    resources :appetizers, only: [:index], on: :member
   end
   resources :posts do
     resources :comments, only: %i[create destroy], shallow: true
