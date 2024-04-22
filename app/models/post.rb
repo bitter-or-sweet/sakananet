@@ -12,6 +12,9 @@ class Post < ApplicationRecord
 
   mount_uploader :post_image, PostImageUploader
 
+  geocoded_by :address
+  after_validation :geocode
+
   def self.ransackable_attributes(auth_object = nil)
     ["title", "body", "alcohol", "appetizer"]
   end

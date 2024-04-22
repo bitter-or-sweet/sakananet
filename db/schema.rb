@@ -89,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_21_233740) do
     t.bigint "alcohol_genre_id"
     t.bigint "appetizer_genre_id"
     t.string "post_image"
-    t.text "addless"
+    t.text "address"
     t.float "latitude"
     t.float "longitude"
     t.index ["alcohol_genre_id"], name: "index_posts_on_alcohol_genre_id"
