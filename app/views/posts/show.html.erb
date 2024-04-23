@@ -90,7 +90,7 @@
       });
    }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
   <div class="w-full">
     <%= render 'comments/comments', { comments: @comments } %>
     <%= render 'comments/form', { post: @post, comment: @comment } %>
