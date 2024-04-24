@@ -28,6 +28,10 @@
     <%= f.label :body, '本文' %>
     <%= f.text_area :body, class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: Post.human_attribute_name(:body) %>
   </div>
+  <div class="mb-5">
+    <%= f.label :address, 'スポット名' %>
+    <%= f.text_field :address, id: 'address', class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: "スポット名を入力してください" %>
+  </div>
   <div class="flex flex-col sm:flex-row mb-5">
     <div class="w-full md:w-1/2 mb-5">
       <%= f.label :post_image %>
@@ -39,6 +43,36 @@
     </div>
   </div>
   <div class="sm-text-lg font-semibold text-center">
-    <%= f.submit t('helpers.submit.post'), class: 'bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full w-1/3 py-3' %>
+    <%= f.submit t('helpers.submit.post'), id: 'new_post', class: 'bg-point hover:bg-yellow-400 shadow-xl my-10 rounded-full w-1/3 py-3' %>
   </div>
 <% end %>
+<script>
+  function initAutocomplete() {
+    var addressInput = document.getElementById('address');
+    var validPlaceSelected = false; // ユーザーが候補から選択したかどうかを判定する真偽値
+
+    var autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      types: ['restaurant', 'bar'],
+      componentRestrictions: {country: "jp"} // 日本国内の住所のみ検索
+    });
+
+    // 住所選択時のイベントリスナー
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        validPlaceSelected = false; // 有効な場所が選択されていない
+      } else {
+        validPlaceSelected = true; // 有効な場所が選択された
+      }
+    });
+
+    // フォームの送信時のイベントハンドラーを追加
+    document.getElementById('new_post').addEventListener('submit', function(e) {
+      if (!validPlaceSelected) {
+        e.preventDefault(); // フォームの送信を阻止
+        alert("リストから住所を選択してください。");
+      }
+    });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&libraries=places&callback=initAutocomplete"></script>
