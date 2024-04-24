@@ -59,9 +59,11 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-center mb-5">
-    <div id="map" style="height: 500px; width: 800px"></div>
-  </div>
+  <% if @post.address != "" %>
+    <div class="flex justify-center mb-5">
+      <div id="map" style="height: 500px; width: 800px"></div>
+    </div>
+  <% end %>
 
   <script>
     function initMap(){
