@@ -2,25 +2,13 @@
   <div class="border bg-amber-50 shadow-xl rounded-lg p-4">
     <div class="flex flex-row justify-between">
       <div class="flex flex-row items-center">
-        <% if post.user.avatar? %>
-          <%= image_tag post.user.avatar.url, class: 'rounded-[10px] h-7 w-7 border mr-2' %>
-        <% else %>
-          <%= image_tag 'default.jpg', class: 'rounded-[10px] h-7 w-7 border mr-2' %>
-        <% end %>
+        <%= user_avatar(post.user) %>
         <%= link_to post.user.name, post.user == current_user ? profile_path : user_path(post.user), class: 'hover:text-yellow-400' %>
       </div>
       <%= l post.created_at, format: :long %>
     </div>
     <div class="flex items-center justify-center w-full">
-      <% if post.post_image? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.post_image.url %>
-        <% end %>
-      <% else %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag 'post_placeholder.png' %>
-        <% end %>
-      <% end %>
+      <%= display_post_image(post) %>
     </div>
     <div class="flex justify-between">
       <div class="space-y-2">
@@ -36,13 +24,9 @@
           </div>
         </div>
       </div>
-      <% if current_user.present? %>
-        <div class="flex flex-col-reverse">
-          <% unless current_user.own?(post) %>
-            <%= render 'like_button', post: post %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="flex flex-col-reverse">
+        <%= display_like_button(current_user, post) %>
+      </div>
     </div>
   </div>
 </div>
