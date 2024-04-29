@@ -22,11 +22,9 @@
     <%= simple_format(comment.body) %>
   </div>
   <div class="chat-footer">
-    <% if current_user.present? %>
-      <% if current_user.own?(comment) %>
-        <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-          <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
-        <% end %>
+    <% if logged_in? && current_user.own?(comment) %>
+      <%= link_to comment_path(comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+        <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
       <% end %>
     <% end %>
   </div>

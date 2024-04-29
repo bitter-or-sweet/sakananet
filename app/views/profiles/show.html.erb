@@ -12,20 +12,12 @@
     </div>
     <div class="w-full sm:w-1/3">
       <div class="flex justify-start items-center mb-5">
-        <% if @user.avatar? %>
-          <%= image_tag @user.avatar.url, class:"rounded-[5px] w-20 h-20 mr-5" %>
-        <% else %>
-          <%= image_tag 'default.jpg', class:"rounded-[5px] w-20 h-20 mr-5" %>
-        <% end %>
+        <%= display_user_avatar(@user, "rounded-[5px] w-20 h-20 mr-5") %>
         <div class="text-2xl">
           <%= @user.name %>
         </div>
       </div>
-      <% if @user.profile? %>
-        <%= simple_format(@user.profile) %>
-      <% else %>
-        プロフィール未入力
-      <% end %>
+      <%= @user.profile? ? simple_format(@user.profile) : "プロフィール未入力" %>
     </div>
   </div>
 </div>
