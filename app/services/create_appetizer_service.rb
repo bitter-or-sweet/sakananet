@@ -13,21 +13,26 @@ class CreateAppetizerService
   private
 
   def process_response(response)
+    return false unless response
+    appetizer_name, appetizer_description = extract_appetizer_data(response)
+    return false if appetizer_name.blank? || appetizer_description.blank?
+    save_appetizer_data(appetizer_name, appetizer_description)
+  end
+
+  def extract_appetizer_data(response)
     # AIの回答からおつまみの名前と解説を抽出
-    response && match = response.match(/おつまみ:\s*(.+?)\s*解説:\s*(.+)/)
-    appetizer_name = match[1].strip
-    appetizer_description = match[2].strip
-    # 抽出したデータがすべて存在するかチェック
-    if appetizer_name.blank? || appetizer_description.blank?
-      return false # 抽出したデータがすべて存在しなければ失敗を返す
-    else
-      ActiveRecord::Base.transaction do
-        # 抽出したデータを@appetizerに保存
-        @appetizer.name = appetizer_name
-        @appetizer.description = appetizer_description
-        @appetizer.save! #save! を使用して明示的に例外を発生
-      end
-      true # 保存が成功した場合、trueを返す
+    match = response.match(/おつまみ:\s*(.+?)\s*解説:\s*(.+)/)
+    return [] unless match
+    [match[1].strip, match[2].strip]
+  end
+
+  def save_appetizer_data(name, description)
+    ActiveRecord::Base.transaction do
+      @appetizer.update!(name: name, description: description)
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error("Failed to save appetizer: #{e.message}")
+      return false
     end
+    true
   end
 end

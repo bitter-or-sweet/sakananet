@@ -1,5 +1,6 @@
 class AppetizersController < ApplicationController
   before_action :set_token, only: :create
+  before_action :set_genres, only: %i[new create]
 
   def index
     @appetizers = Appetizer.where(user_id: params[:user_id]).includes(:user).order(created_at: :desc).page(params[:page])
@@ -42,5 +43,9 @@ class AppetizersController < ApplicationController
 
   def set_token
     @api_key = Rails.application.credentials.dig(:openai, :api_key)
+  end
+
+  def set_genres
+    @selected_genres = AlcoholGenre.where(genre: ["ビール", "焼酎", "日本酒", "ウイスキー", "ブランデー", "ワイン", "梅酒", "サワー", "酎ハイ"])
   end
 end
