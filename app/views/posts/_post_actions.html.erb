@@ -1,0 +1,8 @@
+<div class="flex space-x-5">
+  <%= link_to edit_post_path(post) do %>
+    <i class="fa-regular fa-pen-to-square fa-lg hover:text-yellow-400"></i>
+  <% end %>
+  <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
+    <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
+  <% end %>
+</div>

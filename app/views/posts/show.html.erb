@@ -9,24 +9,11 @@
       <div class="border bg-amber-50 shadow-2xl p-4 rounded-lg">
         <div class="flex justify-between items-center mb-3">
           <div class="flex justify-start items-center">
-            <% if @post.user.avatar? %>
-              <%= image_tag @post.user.avatar.url, class:"rounded-[5px] w-10 h-10 mr-5" %>
-            <% else %>
-              <%= image_tag 'default.jpg', class:"rounded-[5px] w-10 h-10 mr-5" %>
-            <% end %>
+            <%= display_user_avatar(@post.user) %>
             <%= link_to @post.user.name, @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' %>
           </div>
-          <% if current_user.present? %>
-            <% if current_user.own?(@post) %>
-              <div class="flex space-x-5">
-                <%= link_to edit_post_path(@post) do %>
-                  <i class="fa-regular fa-pen-to-square fa-lg hover:text-yellow-400"></i>
-                <% end %>
-                <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm') } do %>
-                  <i class="fa-regular fa-trash-can fa-lg hover:text-red-500"></i>
-                <% end %>
-              </div>
-            <% end %>
+          <% if logged_in? && current_user.own?(@post) %>
+            <%= render 'posts/post_actions', post: @post %>
           <% end %>
         </div>
         <div class="space-y-2 text-center">
@@ -45,54 +32,25 @@
             </div>
           </div>
           <div class="flex justify-end items-center">
-            <% if current_user.present? %>
-              <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
-                  class: "bg-slate-950 hover:bg-slate-700 text-white py-1 px-2 rounded-[5px] text-lg mr-5" do %>
-                <i class="fa-brands fa-x-twitter"></i>
-              <% end %>
-              <% unless current_user.own?(@post) %>
-                <%= render 'posts/like_button', post: @post %>
-              <% end %>
+          <% if logged_in? %>
+            <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+                class: "bg-slate-950 hover:bg-slate-700 text-white py-1 px-2 rounded-[5px] text-lg mr-5" do %>
+              <i class="fa-brands fa-x-twitter"></i>
             <% end %>
+          <% end %>
+            <%= display_like_button(@post) %>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <% if @post.address != "" %>
+  <% unless @post.address.blank? %>
     <div class="flex justify-center mb-5">
-      <div id="map" style="height: 500px; width: 800px"></div>
+      <div id="map" data-latitude="<%= @post.latitude %>" data-longitude="<%= @post.longitude %>" data-address="<%= @post.address %>" style="height: 500px; width: 800px"></div>
     </div>
   <% end %>
 
-  <script>
-    function initMap(){
-      // 地図の位置情報(緯度・経度)を取得
-      let mapPosition = {lat: <%= @post.latitude || 0 %> , lng: <%= @post.longitude || 0 %> };
-      let map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 17,
-        center: mapPosition
-      });
-      let transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
-
-      let contentString = '【住所】<%= @post.address %>';
-      let infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-
-      let marker = new google.maps.Marker({
-        position: mapPosition,
-        map: map,
-        title: contentString
-      });
-
-      marker.addListener('click', function(){
-        infowindow.open(map, marker);
-      });
-   }
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>&callback=initMap"></script>
   <div class="w-full">
     <%= render 'comments/comments', { comments: @comments } %>
     <%= render 'comments/form', { post: @post, comment: @comment } %>

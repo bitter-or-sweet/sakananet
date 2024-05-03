@@ -10,7 +10,8 @@ class OpenaiAppetizerGenerator
   def call
     @client = OpenAI::Client.new(access_token: @api_key)
     begin
-      build_body(@appetizer)
+      ingredients = get_ingredients(@appetizer)
+      build_query(ingredients)
       response = @client.chat(
         parameters: {
           model: "gpt-4-turbo",
@@ -52,18 +53,23 @@ class OpenaiAppetizerGenerator
 
   private
 
-  def build_body(input)
-    alcohol = Alcohol.find(input.alcohol_id)
-    base_ingredient = Ingredient.find(input.base_ingredient_id)
-    sub_ingredient = Ingredient.find(input.sub_ingredient_id)
-    accent_ingredient = Ingredient.find(input.accent_ingredient_id)
+  def get_ingredients(input)
+    {
+      alcohol: Alcohol.find(input.alcohol_id),
+      base_ingredient: Ingredient.find(input.base_ingredient_id),
+      sub_ingredient: Ingredient.find(input.sub_ingredient_id),
+      accent_ingredient: Ingredient.find(input.accent_ingredient_id)
+    }
+  end
+
+  def build_query(ingredients)
     # APIに渡す回答内容、条件を指定
-    @query = "#{alcohol.name}に合うおつまみの名前と解説を、以下の食材を使って1つ提案してください。
+    @query = "#{ingredients[:alcohol].name}に合うおつまみの名前と解説を、以下の食材を使って1つ提案してください。
 
     # 食材
-    #{base_ingredient.name}
-    #{sub_ingredient.name}
-    #{accent_ingredient.name}
+    #{ingredients[:base_ingredient].name}
+    #{ingredients[:sub_ingredient].name}
+    #{ingredients[:accent_ingredient].name}
 
     # 出力フォーマット
     おつまみ:おつまみの名前

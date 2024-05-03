@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div class="mx-auto w-5/6 max-w-screen-sm">
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
-  <%= form_with model: @user do |f| %>
+  <%= form_with url: login_path, method: :post do |f| %>
     <div class="mb-5">
       <%= f.label :email %>
       <%= f.text_field :email, class: 'input border-gray-400 w-full' %>
