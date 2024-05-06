@@ -64,7 +64,7 @@ class AppetizersController < ApplicationController
       steps_part = ""
     end
 
-    description = description.sub('解説: ', '').strip
+    description = description.sub('解説: ', '').strip if description
 
     # 材料名と量を抽出
     @ingredients = ingredients_part.scan(/材料\d+: ([^\n-]+) - ([^\n]+)/).map do |name, amount|
