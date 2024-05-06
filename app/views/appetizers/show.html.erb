@@ -1,12 +1,28 @@
 <% content_for(:title, t('.title')) %>
-<div class="mx-auto w-5/6 max-w-screen-sm">
-  <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= @appetizer.name %></h1>
-  <p class="mb-10"><%= @appetizer.description %></p>
-  <div class="flex flex-col md:flex-row items-center">
+<div class="mx-auto w-5/6 max-w-screen-sm border shadow-lg bg-amber-50 rounded-[10px] mt-20 p-3">
+  <h1 class="text-lg sm:text-2xl font-bold text-center border-dotted border-b-4 border-yellow-400 mt-5 mb-10"><%= @appetizer.name %></h1>
+  <p class="mb-5"><%= @description %></p>
+  <h1 class="text-lg sm:text-xl font-bold text-center mt-10 mb-5">使用材料・分量（2人前）</h1>
+  <%= render 'ingredients', ingredients: @ingredients %>
+  <div class="flex flex-col">
+    <div class="flex items-start mb-10">
+      <div class="bg-yellow-400 text-center px-4 py-2 rounded-full mr-5">1</div>
+      <div class=""><%= @first_step %></div>
+    </div>
+    <div class="flex items-start mb-10">
+      <div class="bg-yellow-400 text-center px-4 py-2 rounded-full mr-5">2</div>
+      <div class=""><%= @second_step %></div>
+    </div>
+    <div class="flex items-start">
+      <div class="bg-yellow-400 text-center px-4 py-2 rounded-full mr-5">3</div>
+      <div class=""><%= @third_step %></div>
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row items-center mt-10 md:mt-0">
     <% if logged_in? %>
       <div class="flex justify-center w-full md:w-1/2">
         <%= link_to "https://twitter.com/share?url=#{appetizer_url(@appetizer)}&text=#{ERB::Util.url_encode("「#{@appetizer.alcohol.name}」に合うおつまみは、「#{@appetizer.name}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
-            class: 'bg-slate-950 hover:bg-slate-700 text-white font-bold rounded-full px-5 py-3' do %>
+            class: 'bg-slate-950 hover:bg-slate-700 text-white font-bold rounded-full shadow-xl px-5 py-3' do %>
           <i class="fa-brands fa-x-twitter"></i>で共有する
         <% end %>
       </div>

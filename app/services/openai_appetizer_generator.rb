@@ -64,7 +64,7 @@ class OpenaiAppetizerGenerator
 
   def build_query(ingredients)
     # APIに渡す回答内容、条件を指定
-    @query = "#{ingredients[:alcohol].name}に合うおつまみの名前と解説を、以下の食材を使って1つ提案してください。
+    @query = "#{ingredients[:alcohol].name}に合うおつまみの名前、解説、および具体的な調理手順を以下の食材を使って1つ提案してください。
 
     # 食材
     #{ingredients[:base_ingredient].name}
@@ -74,6 +74,16 @@ class OpenaiAppetizerGenerator
     # 出力フォーマット
     おつまみ:おつまみの名前
     解説:おつまみの解説
+    材料(最大5個):
+    材料1: 材料名:2人前分量
+    材料2: 材料名:2人前分量
+    材料3: 材料名:2人前分量
+    材料4: 材料名:2人前分量
+    材料5: 材料名:2人前分量
+    手順:
+    ステップ1: [詳細な説明]
+    ステップ2: [詳細な説明]
+    ステップ3: [詳細な説明]
 
     # 条件
     300トークン以内で出力"
