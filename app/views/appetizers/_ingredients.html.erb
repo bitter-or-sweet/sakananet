@@ -1,0 +1,8 @@
+<div class="flex flex-col w-full sm:w-3/5 mx-auto space-y-2 mb-10">
+  <% ingredients.each do |ingredient| %>
+    <div class="flex justify-between border-b border-gray-400">
+      <p><%= ingredient[:name] %></p>
+      <p><%= ingredient[:amount] %></p>
+    </div>
+  <% end %>
+</div>

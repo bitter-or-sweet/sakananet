@@ -14,25 +14,46 @@ class CreateAppetizerService
 
   def process_response(response)
     return false unless response
-    appetizer_name, appetizer_description = extract_appetizer_data(response)
-    return false if appetizer_name.blank? || appetizer_description.blank?
-    save_appetizer_data(appetizer_name, appetizer_description)
+    appetizer_name, appetizer_description, appetizer_ingredients, appetizer_steps = extract_appetizer_data(response)
+    return false if appetizer_name.blank? || appetizer_description.blank? || appetizer_ingredients.blank? || appetizer_steps.blank?
+    save_appetizer_data(appetizer_name, appetizer_description, appetizer_ingredients, appetizer_steps)
   end
 
   def extract_appetizer_data(response)
-    # AIの回答からおつまみの名前と解説を抽出
-    match = response.match(/おつまみ:\s*(.+?)\s*解説:\s*(.+)/)
+    # AIの回答からおつまみの名前、解説、材料、分量、手順を抽出
+    match = response.match(/おつまみ:\s*(.+?)\s*解説:\s*(.+?)\s*材料\(最大5個\):(.+?)手順:\s*([\s\S]+)/m)
     return [] unless match
-    [match[1].strip, match[2].strip]
+    name = match[1].strip
+    description = match[2].strip
+    ingredients_text = match[3].strip
+    steps = match[4].strip
+
+    # 材料リストの抽出
+    ingredients = ingredients_text.scan(/材料\d+: ([^\n:]+):([^\n]+)/).map do |ingredient_name, quantity|
+      { name: ingredient_name.strip, amount: quantity.strip }
+    end
+
+    [name, description, ingredients, steps]
   end
 
-  def save_appetizer_data(name, description)
+  def save_appetizer_data(name, description, ingredients, steps)
+    ingredients_text = ingredients.map.with_index(1) do |ingredient, index|
+      "材料#{index}: #{ingredient[:name]} - #{ingredient[:amount]}"
+    end.join("\n")
+
+    responce_text = "#{description}\n材料(最大5個):\n#{ingredients_text}\n手順:\n#{steps}"
+    full_description = responce_text.gsub(/(?<!^)(ステップ\d+:)/, "\n\\1")
+
     ActiveRecord::Base.transaction do
-      @appetizer.update!(name: name, description: description)
+      if @appetizer.update(name: name, description: full_description)
+          true
+      else
+          Rails.logger.error("Update failed")
+          false
+      end
     rescue ActiveRecord::RecordInvalid => e
       Rails.logger.error("Failed to save appetizer: #{e.message}")
-      return false
+      false
     end
-    true
   end
 end
