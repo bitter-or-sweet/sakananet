@@ -6,7 +6,7 @@ class AppetizersController < ApplicationController
   before_action :set_description_steps, only: :show
 
   def index
-    @appetizers = Appetizer.where(user_id: params[:user_id]).includes(:user).order(created_at: :desc).page(params[:page])
+    @appetizers = Appetizer.where(user_id: params[:user_id]).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -31,6 +31,12 @@ class AppetizersController < ApplicationController
       flash.now[:alert] = "予期せぬエラーが発生しました。もう一度お試しいただくか、管理者までお問い合わせください。"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @appetizer = Appetizer.find(params[:id])
+    @appetizer.destroy!
+    redirect_to user_appetizers_path(current_user), notice: t('defaults.message.deleted', item: Appetizer.model_name.human), status: :see_other
   end
 
   def show; end
