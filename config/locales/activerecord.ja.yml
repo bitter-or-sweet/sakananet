@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       post: 投稿
       comment: コメント
+      appetizer: 組み合わせ
     attributes:
       user:
         email: メールアドレス
