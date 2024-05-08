@@ -2,8 +2,25 @@
 <div class="mx-auto w-5/6 max-w-screen-sm">
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
   <div class="text-center mb-10">
-    <p>以下のフォームにお酒、食材を入力すると、</p>
-    <p>AIに組み合わせを提案してもらうことができます。</p>
+    <p>お酒、食材を選択すると、</p>
+    <p>食材をもとに、お酒に合うおつまみをAIが提案します。</p>
+    <p class="text-sm bg-yellow-400 rounded-[5px] px-1 py-2 mt-5">AIによる回答のため、正確な内容ではない場合があります。予めご了承ください。</p>
   </div>
   <%= render 'form', appetizer: @appetizer %>
 </div>
+
+<!-- モーダルウィンドウ -->
+<section id="modalArea" class="modalArea hidden fixed inset-0 z-10 opacity-0 transition-opacity duration-400 ease-in-out justify-center items-center">
+  <div id="modalBg" class="w-full h-full bg-black bg-opacity-50 flex justify-center items-center"></div>
+    <div class="modalWrapper absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-md">
+      <div class="container mx-auto px-5 py-5 bg-base-content rounded-lg items-center text-center">
+        <div class="bg-point rounded-md shadow-md">
+          <div class="flex flex-col text-center text-xl items-center center p-10">
+            <span class="loading loading-bars loading-lg"></span>
+            <p>おつまみを生成しています</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
