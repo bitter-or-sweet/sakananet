@@ -16,8 +16,8 @@
   <% else %>
     プロフィール未入力
   <% end %>
-  <div class="mt-10">
-    <%= link_to '過去の投稿一覧を見る', user_posts_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500' %>
+  <div class="flex flex-row mt-10">
+    <%= link_to '過去の投稿一覧を見る', user_posts_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500 mr-5' %>
     <%= link_to 'AI組合せを見る', user_appetizers_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500' %>
   </div>
 </div>
