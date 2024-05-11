@@ -2,15 +2,15 @@
   <%= link_to root_path do %>
     <%= image_tag 'top.png' %>
   <% end %>
-  <button id="button" type="button" class="z-10 absolute top-6 right-6 md:hidden">
+  <button id="button" type="button" class="z-20 absolute top-6 right-6 md:hidden">
     <i id="bars" class="fa-solid fa-bars fa-2x hover:text-gray-500"></i>
     <i id="xmark" class="fa-solid fa-xmark fa-2x hover:text-gray-500 hidden"></i>
   </button>
   <nav>
-    <ul id="menu" class="fixed top-0 left-0 z-0 w-full bg-point text-center font-bold translate-x-full transition ease-linear">
-      <li class="p-3"><%= link_to t('header.post_index'), posts_path, class: 'hover:text-gray-500' %></li>
-      <li class="p-3"><%= link_to t('header.sign_up'), new_user_path, class: 'hover:text-gray-500' %></li>
-      <li class="p-3"><%= link_to t('header.login'), login_path, class: 'hover:text-gray-500' %></li>
+    <ul id="menu" class="fixed top-0 left-0 z-10 w-full bg-point text-center font-bold translate-x-full transition ease-linear">
+      <li class="p-3"><i class="fa-solid fa-list"></i><%= link_to t('header.post_index'), posts_path, class: 'hover:text-gray-500 ml-2' %></li>
+      <li class="p-3"><i class="fa-solid fa-user-plus"></i><%= link_to t('header.sign_up'), new_user_path, class: 'hover:text-gray-500 ml-2' %></li>
+      <li class="p-3"><i class="fa-solid fa-arrow-right-to-bracket"></i><%= link_to t('header.login'), login_path, class: 'hover:text-gray-500 ml-2' %></li>
     </ul>
     <div class="space-x-14 items-center text-lg font-bold md:flex hidden md:block">
       <%= link_to t('header.post_index'), posts_path, class: 'hover:text-gray-500' %>
