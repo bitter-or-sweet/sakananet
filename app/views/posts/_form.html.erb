@@ -1,36 +1,36 @@
 <%= form_with model: post, id: 'new_post' do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="mb-5">
-    <%= f.label :title, 'タイトル' %>
-    <%= f.text_field :title, class: 'input border-gray-400 w-full', placeholder: Post.human_attribute_name(:title) %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'input border-gray-400 w-full', placeholder: '投稿の題目、キャッチコピーなど' %>
   </div>
   <div class="flex flex-col sm:flex-row mb-5">
     <div class="w-full sm:w-1/2 mb-5 sm:mb-0">
-      <%= f.label :alcohol, 'お酒' %>
+      <%= f.label :alcohol %>
       <%= f.text_field :alcohol, class: 'input border-gray-400 w-full', placeholder: "#{Post.human_attribute_name(:alcohol)}の名前" %>
     </div>
     <div class="w-full sm:w-1/2">
-      <%= f.label :alcohol_genre, 'お酒のジャンル' %>
+      <%= f.label :alcohol_genre %>
       <%= f.select :alcohol_genre_id, AlcoholGenre.all.map { |genre| [genre.genre, genre.id] }, { include_blank: "未選択" }, class: 'border border-gray-400 rounded-lg w-full px-5 py-3' %>
     </div>
   </div>
   <div class="flex flex-col sm:flex-row mb-5">
     <div class="w-full sm:w-1/2 mb-5 sm:mb-0">
-      <%= f.label :appetizer, 'おつまみ' %>
+      <%= f.label :appetizer %>
       <%= f.text_field :appetizer, class: 'input border-gray-400 w-full', placeholder: "#{Post.human_attribute_name(:appetizer)}の名前" %>
     </div>
     <div class="w-full sm:w-1/2">
-      <%= f.label :appetizer_genre, 'おつまみのジャンル' %>
+      <%= f.label :appetizer_genre %>
       <%= f.select :appetizer_genre_id, AppetizerGenre.all.map { |genre| [genre.genre, genre.id] }, { include_blank: "未選択" }, class: 'border border-gray-400 rounded-lg w-full px-5 py-3' %>
     </div>
   </div>
   <div class="mb-5">
-    <%= f.label :body, '本文' %>
-    <%= f.text_area :body, class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: Post.human_attribute_name(:body) %>
+    <%= f.label :body, '感想（任意）' %>
+    <%= f.text_area :body, class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: 'お酒、おつまみに関して感じたこと、おすすめポイントなどご自由に' %>
   </div>
   <div class="mb-5">
-    <%= f.label :address, 'スポット名' %>
-    <%= f.text_field :address, id: 'address', class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: "スポット名を入力してください" %>
+    <%= f.label :address, '店名（任意）' %>
+    <%= f.text_field :address, id: 'address', class: 'border border-gray-400 rounded-[10px] w-full p-2', rows: 3, placeholder: "文字を入力すると候補から選択できます" %>
   </div>
   <div class="flex flex-col sm:flex-row mb-5">
     <div class="w-full md:w-1/2 mb-5">
