@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+  skip_before_action :store_return_to, only: :new
   skip_before_action :require_login
 
   def new; end

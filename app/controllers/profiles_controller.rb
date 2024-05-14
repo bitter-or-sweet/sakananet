@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  skip_before_action :store_return_to, only: :show
   before_action :set_user, only: %i[show edit update]
 
   def show; end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :store_return_to, only: %i[new show]
   skip_before_action :require_login, only: %i[new create]
 
   def new
