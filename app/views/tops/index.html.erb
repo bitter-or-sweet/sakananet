@@ -20,9 +20,11 @@
       <%= image_tag 'top_icon.webp', class: 'rounded-xl border shadow-2xl w-72 h-auto md:w-80 md:h-auto' %>
     </div>
   </div>
-  <p class="pt-6 text-center text-sm md:text-base">みんなのアイデアで晩酌、飲み会をより豊かに...</p>
-  <p class="pt-2 text-center text-sm md:text-base">まずは、みんなの投稿を見に行きましょう！</p>
-  <div class="flex justify-center">
-    <%= link_to 'みんなの投稿へ', posts_path, class: 'bg-point hover:bg-yellow-400 text-black text-xl md:text-3xl font-bold rounded-[10px] my-6 md:my-8 px-5 md:px-10 py-2 md:py-5 shadow-xl skeleton' %>
+  <p class="text-center text-lg text-gray-700 font-bold md:text-lg pt-5 mb-12">みんなのアイデアで晩酌、飲み会をより豊かに...</p>
+  <div class="flex justify-center items-center">
+    <i class="fa-solid fa-angles-down fa-lg pr-2"></i>
+    <h1 class="text-xl md:text-2xl font-bold">酒菜ネットの使い方</h1>
+    <i class="fa-solid fa-angles-down fa-lg pl-2"></i>
   </div>
+  <%= render 'explanation' %>
 </div>
