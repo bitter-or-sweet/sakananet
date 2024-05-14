@@ -26,7 +26,7 @@ ja:
     new:
       title: ログイン
       login: ログイン
-      password_forget: パスワードをお忘れの方はこちら
+      password_forget: パスワードをお忘れですか？
     create:
       success: ログインしました
       failure: ログインに失敗しました
