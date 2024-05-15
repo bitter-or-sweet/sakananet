@@ -5,7 +5,7 @@
   </h1>
   <%= render 'search_form', q: @q, url: params[:user_id] ? user_posts_path(params[:user_id]) : posts_path %>
   <% if @posts.present? %>
-    <div class="flex flex-wrap mt-10">
+    <div class="flex flex-wrap md:mt-10">
       <% @posts.each do |post| %>
         <%= render 'post', post: post %>
       <% end %>
