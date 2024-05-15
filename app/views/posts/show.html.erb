@@ -9,8 +9,11 @@
       <div class="border bg-amber-50 shadow-2xl p-4 rounded-lg">
         <div class="flex justify-between items-center mb-3">
           <div class="flex justify-start items-center">
-            <%= display_user_avatar(@post.user) %>
-            <%= link_to @post.user.name, @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' %>
+            <%= link_to @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' do %>
+              <div class="flex items-center hover:text-yellow-400 text-lg">
+                <%= display_user_avatar(@post.user) %><%=  @post.user.name %>
+              </div>
+            <% end %>
           </div>
           <% if logged_in? && current_user.own?(@post) %>
             <%= render 'posts/post_actions', post: @post %>
