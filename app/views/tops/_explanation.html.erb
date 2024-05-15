@@ -61,7 +61,7 @@
   <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
     <div class="flex flex-col xl:flex-row">
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
-        <%= link_to 'マイページ', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <%= link_to 'マイページ', profile_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
           <p>マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、</p>
           <p class="mb-5">プロフィール設定にアクセスできます。</p>
@@ -76,7 +76,11 @@
   <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
     <div class="flex flex-col xl:flex-row">
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
-        <%= link_to 'AI組合せの回答結果', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <% if logged_in? %>
+          <%= link_to 'AI組合せの回答結果', user_appetizers_path(current_user), class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <% else %>
+          <%= link_to 'AI組合せの回答結果', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <% end %>
         <div class="text-left py-3 xl:py-10 mx-auto">
           <p>AI組合せの回答結果は、マイページより確認できます。</p>
           <p class="mb-5">お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。</p>
