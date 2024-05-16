@@ -42,7 +42,7 @@
               <i class="fa-brands fa-x-twitter"></i>
             <% end %>
             <% link_url = "http://line.me/R/msg/text/?" + CGI.escape("今日のお酒&おつまみは\n「#{@post.alcohol}&#{@post.appetizer}」！\n---酒菜ネット---\n #{request.base_url + posts_path(@post)}") %>
-            <%= link_to link_url, title: 'LINEで共有', class: 'hover:text-[#00CC33] text-[#00B900] rounded-[5px] text-lg pt-1', target: '_blank', rel: 'noopener noreferrer' do %>
+            <%= link_to link_url, title: 'LINEで共有', class: 'hover:text-[#00CC33] text-[#00B900] rounded-[5px] text-lg pt-1 mr-5', target: '_blank', rel: 'noopener noreferrer' do %>
               <i class="fa-brands fa-line fa-2x"></i>
             <% end %>
           <% end %>
