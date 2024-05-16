@@ -2,10 +2,10 @@
   <div class="flex justify-center items-center flex-col-reverse md:flex-row mt-10 md:mt-40">
     <div class="w-full md:w-1/2 flex flex-col mt-10 md:mt-0">
       <div class="space-y-2">
-        <h1 class="text-xl md:text-4xl font-bold text-center drop-shadow-xl">
+        <h1 class="text-2xl md:text-4xl font-bold text-center drop-shadow-xl">
           酒菜ネットは、お酒&おつまみの
         </h1>
-        <h1 class="text-xl md:text-4xl font-bold text-center drop-shadow-xl">
+        <h1 class="text-2xl md:text-4xl font-bold text-center drop-shadow-xl">
           情報共有サービスです
         </h1>
       </div>
@@ -20,11 +20,30 @@
       <%= image_tag 'top_icon.webp', class: 'rounded-xl border shadow-2xl w-72 h-auto md:w-80 md:h-auto' %>
     </div>
   </div>
-  <p class="text-center text-lg text-gray-700 font-bold md:text-lg pt-5 mb-12">みんなのアイデアで晩酌、飲み会をより豊かに...</p>
+  <div class="flex flex-wrap justify-center">
+    <p class="text-center text-lg text-gray-700 font-bold md:text-lg md:pt-5 md:mb-12">みんなのアイデアで</p>
+    <p class="text-center text-lg text-gray-700 font-bold md:text-lg md:pt-5 mb-10">晩酌、飲み会をより豊かに...</p>
+  </div>
   <div class="flex justify-center items-center">
     <i class="fa-solid fa-angles-down fa-lg pr-2"></i>
     <h1 class="text-xl md:text-2xl font-bold">酒菜ネットの使い方</h1>
     <i class="fa-solid fa-angles-down fa-lg pl-2"></i>
   </div>
   <%= render 'explanation' %>
+  <div class="flex flex-wrap mb-14">
+    <div class="w-full md:w-1/3 flex justify-center">
+      <%= link_to new_user_path, class: 'text-lg font-bold bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-300 px-4 py-2 mb-3 md:mb-0' do %>
+        <i class="fa-solid fa-user-plus mr-2"></i>新規登録
+      <% end %>
+    </div>
+    <div class="w-full md:w-1/3 flex justify-center">
+      <%= link_to login_path, class: 'text-lg font-bold bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-300 px-4 py-2 mb-3 md:mb-0' do %>
+        <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>ログイン
+      <% end %>
+    </div>
+    <div class="w-full md:w-1/3 flex justify-center">
+      <%= link_to posts_path, class: 'text-lg font-bold bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-300 px-4 py-2' do %>
+        <i class="fa-solid fa-list mr-2"></i>みんなの投稿
+      <% end %>
+    </div>
 </div>

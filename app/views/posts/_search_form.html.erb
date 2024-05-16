@@ -1,4 +1,4 @@
-<%= search_form_for q, url: url, class: 'flex flex-wrap w-full justify-center' do |f| %>
+<%= search_form_for q, url: url, class: 'flex flex-wrap justify-center' do |f| %>
   <% if params[:user_id].present? %>
     <%= f.hidden_field :user_id_eq, value: params[:user_id] %>
   <% end %>
@@ -6,17 +6,19 @@
     <%= f.label :title_or_body_cont, 'タイトル・本文' %>
     <%= f.search_field :title_or_body_cont, class: 'border border-gray-400 rounded-lg w-full px-5 py-3', placeholder: 'キーワードを入力' %>
   </div>
-  <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
-    <%= f.label :alcohol_genre_id_eq, 'お酒のジャンル' %>
-    <%= f.collection_select :alcohol_genre_id_eq, AlcoholGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
+  <div class="flex justify-center sm:w-2/3 lg:w-2/5 mb-5 mx-1">
+    <div class="w-1/2 pr-1">
+      <%= f.label :alcohol_genre_id_eq, 'お酒のジャンル' %>
+      <%= f.collection_select :alcohol_genre_id_eq, AlcoholGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
+    </div>
+    <div class="w-1/2 pl-1">
+      <%= f.label :alcohol_genre_id_eq, 'おつまみのジャンル' %>
+      <%= f.collection_select :appetizer_genre_id_eq, AppetizerGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
+    </div>
   </div>
-  <div class="w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
-    <%= f.label :alcohol_genre_id_eq, 'おつまみのジャンル' %>
-    <%= f.collection_select :appetizer_genre_id_eq, AppetizerGenre.all, :id, :genre, { include_blank: '未選択' }, { class: 'border border-gray-400 rounded-lg text-gray-500 w-full px-5 py-3' } %>
-  </div>
-  <div class="flex justify-center items-end w-full sm:w-2/3 lg:w-1/5 mb-5 mx-1">
-    <%= button_tag(type: 'submit', class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-full px-20 py-3 h-12 flex justify-center items-center') do %>
-      検索<i class="fa-solid fa-magnifying-glass"></i>
+  <div class="flex justify-center items-end w-full sm:w-2/3 lg:w-1/5 mb-2 md:mb-0 mx-1 items-center">
+    <%= button_tag(type: 'submit', class: 'bg-point hover:bg-yellow-400 shadow-xl rounded-full px-16 py-3 h-12 flex justify-center items-center') do %>
+      検索<i class="fa-solid fa-magnifying-glass ml-1"></i>
     <% end %>
   </div>
 <% end %>

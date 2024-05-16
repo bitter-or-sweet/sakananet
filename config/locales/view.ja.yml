@@ -34,7 +34,7 @@ ja:
       success: ログアウトしました
   users:
     new:
-      title: ユーザー登録
+      title: 新規登録
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました

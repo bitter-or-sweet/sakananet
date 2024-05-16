@@ -1,7 +1,7 @@
 <% content_for(:title, @post.title) %>
 <div class="mx-auto w-3/4 lg:w-5/6 max-w-screen-lg">
   <h1 class="text-lg sm:text-2xl font-bold my-20 text-center"><%= t('.title') %></h1>
-  <div class="flex flex-wrap md:justify-between mb-5 lg:pr-10 items-center">
+  <div class="flex flex-wrap md:justify-between mb-10 md:mb-2 lg:pr-10 items-center">
     <div class="flex justify-center w-full lg:w-1/2 lg:p-5">
       <%= image_tag @post.post_image.url, size: '400x300', class:'mb-5' %>
     </div>
@@ -9,8 +9,11 @@
       <div class="border bg-amber-50 shadow-2xl p-4 rounded-lg">
         <div class="flex justify-between items-center mb-3">
           <div class="flex justify-start items-center">
-            <%= display_user_avatar(@post.user) %>
-            <%= link_to @post.user.name, @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' %>
+            <%= link_to @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' do %>
+              <div class="flex items-center hover:text-yellow-400 text-lg">
+                <%= display_user_avatar(@post.user) %><%=  @post.user.name %>
+              </div>
+            <% end %>
           </div>
           <% if logged_in? && current_user.own?(@post) %>
             <%= render 'posts/post_actions', post: @post %>
@@ -45,7 +48,7 @@
     </div>
   </div>
   <% unless @post.address.blank? %>
-    <div class="flex justify-center mb-5">
+    <div class="flex justify-center mb-10">
       <div id="map" data-latitude="<%= @post.latitude %>" data-longitude="<%= @post.longitude %>" data-address="<%= @post.address %>" style="height: 500px; width: 800px"></div>
     </div>
   <% end %>
