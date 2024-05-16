@@ -36,9 +36,14 @@
           </div>
           <div class="flex justify-end items-center">
           <% if logged_in? %>
-            <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは「#{@post.alcohol}&#{@post.appetizer}」！\n酒菜ネット | ")}&hashtags=sakananet", target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
-                class: "bg-slate-950 hover:bg-slate-700 text-white py-1 px-2 rounded-[5px] text-lg mr-5" do %>
+            <% x_url = "https://twitter.com/share?url=#{post_url(@post)}&text=#{ERB::Util.url_encode("今日のお酒&おつまみは\n「#{@post.alcohol}&#{@post.appetizer}」！\n")}&hashtags=酒菜ネット&hashtags=sakananet" %>
+            <%= link_to x_url, title: 'Xで共有', target: '_blank', data: { toggle: "tooltip", placement: "bottom" },
+                class: "bg-slate-950 hover:bg-slate-700 text-white py-1 px-2 rounded-[5px] text-lg mr-5", rel: 'noopener noreferrer' do %>
               <i class="fa-brands fa-x-twitter"></i>
+            <% end %>
+            <% link_url = "http://line.me/R/msg/text/?" + CGI.escape("今日のお酒&おつまみは\n「#{@post.alcohol}&#{@post.appetizer}」！\n---酒菜ネット---\n #{request.base_url + posts_path(@post)}") %>
+            <%= link_to link_url, title: 'LINEで共有', class: 'hover:text-[#00CC33] text-[#00B900] rounded-[5px] text-lg pt-1', target: '_blank', rel: 'noopener noreferrer' do %>
+              <i class="fa-brands fa-line fa-2x"></i>
             <% end %>
           <% end %>
             <%= display_like_button(@post) %>
