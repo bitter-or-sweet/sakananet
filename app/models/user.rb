@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
   has_many :appetizers
+  has_many :authentications, :dependent => :destroy
+  accepts_nested_attributes_for :authentications
 
   mount_uploader :avatar, AvatarUploader
 
