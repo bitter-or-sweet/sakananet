@@ -1,3 +1,5 @@
 default_url_options:
   protcol: 'https'
   host: 'sakananet.onrender.com'
+sorcery:
+  google_callback_url: 'https://www.sakana-net.com/oauth/callback?provider=google'
