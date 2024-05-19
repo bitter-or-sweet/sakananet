@@ -24,7 +24,7 @@ skip_before_action :require_login
   private
 
   def auth_params
-    params.permit(:code, :provider)
+    params.permit(:code, :provider, :error, :state)
   end
 
   def signup_and_login(provider)
