@@ -7,7 +7,7 @@ module PostsHelper
   end
 
   def display_like_button(post)
-    return unless logged_in? && !current_user.own?(post)
+    return unless logged_in?
     render 'like_button', post: post
   end
 end
