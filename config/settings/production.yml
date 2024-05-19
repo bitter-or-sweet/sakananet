@@ -3,3 +3,4 @@ default_url_options:
   host: 'www.sakana-net.com'
 sorcery:
   google_callback_url: 'https://www.sakana-net.com/oauth/callback?provider=google'
+  line_callback_url: 'https://www.sakana-net.com/oauth/callback?provider=line'
