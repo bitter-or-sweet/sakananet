@@ -10,7 +10,7 @@
         <li><%= link_to 'プロフィール設定', edit_profile_path, class:'hover:text-yellow-400' %></li>
       </ul>
     </div>
-    <div class="w-full sm:w-1/3">
+    <div class="w-full sm:w-1/2">
       <div class="flex justify-start items-center mb-5">
         <%= display_user_avatar(@user, "rounded-[5px] w-20 h-20 mr-5") %>
         <div class="text-2xl">
@@ -20,124 +20,79 @@
       <%= @user.profile? ? simple_format(@user.profile) : "プロフィール未入力" %>
     </div>
   </div>
-  <h2 class="text-center text-xl font-bold">ジャンル別投稿数</h2>
-  <div class="flex">
+  <div class="flex justify-center border-b-2 pb-2 mb-5">
+    <h2 class="text-center text-xl font-bold">各ジャンルの投稿数</h2>
+    <div class="dropdown dropdown-top dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+        <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+      <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+        <div tabindex="0" class="card-body">
+          <p class="">投稿数が3以上の場合、<i class="fa-regular fa-chess-king text-yellow-500"></i>が表示されます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @alcohol_genre_counts.empty? %>
+    <p class="text-center">投稿がありません。</p>
+  <% end %>
+  <div class="flex flex-wrap w-full md:w-1/2 mb-16 mx-auto">
     <div class="w-1/2 flex flex-col">
       <% @alcohol_genre_counts.each do |genre, count| %>
         <% if count >= 3 %>
-          <p class="text-red-500 text-center"><%= "#{genre}: #{count}" %></p>
+          <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-500 mr-2"></i><%= "#{genre}: #{count}" %></p>
         <% else %>
-          <p class="text-center"><%= "#{genre}: #{count}" %></p>
+          <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
         <% end %>
       <% end %>
     </div>
     <div class="w-1/2 flex flex-col">
       <% @appetizer_genre_counts.each do |genre, count| %>
         <% if count >= 3 %>
-          <p class="text-red-500 text-center"><%= "#{genre}: #{count}" %></p>
+          <p class="text-center"><i class="fa-regular fa-chess-king text-yellow-500 mr-2"></i><%= "#{genre}: #{count}" %></p>
         <% else %>
-          <p class="text-center"><%= "#{genre}: #{count}" %></p>
+          <p class="text-center"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
         <% end %>
       <% end %>
     </div>
   </div>
-  <h2 class="text-center text-xl font-bold">獲得したお酒の称号</h2>
-  <div class="flex flex-wrap">
-    <% genre_details = {
-      'ビール' => { image: 'beer.webp', description: '中心にはスタイリッシュなホップのコーンが配され、周囲には大麦の茎と泡立つビールマグが描かれている。高いビール知識を持つ者に与えられる称号。'},
-      '焼酎' => { image: 'shochu.webp', description: '中心には金色の蒸留ポットが配置され、周囲にはサツマイモや大麦など、焼酎の原料を象徴する要素が含まれている。焼酎知識の最高位の専門性と名誉を表すために適した豪華で高級感のある称号。' },
-      '日本酒' => { image: 'jp_sake.webp', description: '金色の日本酒の盃と桜の花を中央モチーフとし、日本酒文化の深い知識を象徴している。全体的に豊かで権威ある外観が、日本酒知識の頂点に与えられる称号。'},
-      'ウイスキー' => { image: 'whisky.webp', description: '中央に金色のウイスキーグラスがあり、周りには大麦とオークの葉の複雑な彫刻が施され、豪華で洗練されたデザインとなっている。ウイスキー知識の最高峰に与えられる称号。'},
-      'ブランデー' => { image: 'brandy.webp', description: '金色のブランデー用スニフターグラスが中央に配され、背景は王室のような色で、周りにはブドウのツルとオークの葉が装飾され、豪華で威厳のあるデザインが、ブランデー知識の最高峰に与えられる称号。'},
-      'ワイン' => { image: 'wine.webp', description: '金色のワイングラスが中央にあり、周りはブドウの蔓とワイン樽の複雑な彫刻が施されてる。グラスからエレガントに上がるワインのしぶきがワインテイスティングの達人に与えられる称号。'},
-      'ジン' => { image: 'gin.webp', description: '中心に金色のジンボトルが配置され、周囲にはジュニパーベリー、柑橘類の皮などの植物素材が配されている。ハーブと花の模様の繊細な彫刻が施され、ジン知識の最高峰に与えられる称号。'},
-      'ウォッカ' => { image: 'vodka.webp', description: '中心に金色のウォッカボトルが配置され、周囲にはウォッカの主要成分である小麦とライ麦が描かれている。全体的にエレガントで権威あるデザインから、ウォッカ知識の最高峰に与えられる称号。'},
-      'ラム' => { image: 'rum.webp', description: '中心に金色のラムボトルが配置され、周囲にはサトウキビやトロピカルフルーツ（パイナップル、ココナッツ）が描かれている。華やかなデザインとカリブ海の象徴が施されておりラム知識の最高峰に与えられる称号。'},
-      'テキーラ' => { image: 'tequila.webp', description: '中央に金色のテキーラボトルが配置され、その周囲にはテキーラ製造に不可欠なブルーアガベが描かれている。メキシコ風の装飾パターンとシンボルが施されており、テキーラ知識の最高峰'},
-      '梅酒' => { image: 'plum_wine.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'リキュール' => { image: 'liqueur.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'サワー' => { image: 'sour.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      '酎ハイ' => { image: 'chuhai.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'カクテル' => { image: 'cocktail.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'}
-    } %>
-    <div class="w-full flex flex-wrap items-center">
-      <% @alcohol_genre_counts.each do |genre, count| %>
-        <% if genre == 'ビール' && count >= 3 %>
-          <%= image_tag('beer.webp', alt: 'ビール称号', size: '100x100') %>
-        <% end %>
-        <% if genre == '焼酎' && count >= 3 %>
-          <%= image_tag('shochu.webp', alt: '焼酎称号', size: '100x100') %>
-        <% end %>
-        <% if genre == '日本酒' && count >= 3 %>
-          <%= image_tag('jp_sake.webp', alt: '日本酒称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ウイスキー' && count >= 3 %>
-          <%= image_tag('whisky.webp', alt: 'ウイスキー称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ブランデー' && count >= 3 %>
-          <%= image_tag('brandy.webp', alt: 'ブランデー称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ワイン' && count >= 3 %>
-          <%= image_tag('wine.webp', alt: 'ワイン称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ジン' && count >= 3 %>
-          <%= image_tag('gin.webp', alt: 'ジン称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ウォッカ' && count >= 3 %>
-          <%= image_tag('vodka.webp', alt: 'ウォッカ称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'ラム' && count >= 3 %>
-          <%= image_tag('rum.webp', alt: 'ラム称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'テキーラ' && count >= 3 %>
-          <%= image_tag('tequila.webp', alt: 'テキーラ称号', size: '100x100') %>
-        <% end %>
-        <% if genre == '梅酒' && count >= 3 %>
-          <%= image_tag('plum_wine.webp', alt: '梅酒称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'リキュール' && count >= 3 %>
-          <%= image_tag('liqueur.webp', alt: 'リキュール称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'サワー' && count >= 3 %>
-          <%= image_tag('sour.webp', alt: 'サワー称号', size: '100x100') %>
-        <% end %>
-        <% if genre == '酎ハイ' && count >= 3 %>
-          <%= image_tag('chuhai.webp', alt: '酎ハイ称号', size: '100x100') %>
-        <% end %>
-        <% if genre == 'カクテル' && count >= 3 %>
-          <%= image_tag('cocktail.webp', alt: 'カクテル称号', size: '100x100') %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <h2 class="text-center text-xl font-bold">獲得したおつまみの称号</h2>
-  <div class="flex flex-wrap">
-    <% genre_details = {
-      '和食' => { image: 'japanese.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      '洋食' => { image: 'western.webp', description: '中央に金色のシェフの帽子が配置され、周囲にはステーキ、パスタのボウル、パイの一切れなど、代表的な洋食料理が金色で描かれている。豪華で教養のあるデザインが、洋食知識の本質を体現している。' },
-      '中華' => { image: 'chinese.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      '韓国' => { image: 'korean.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'イタリアン' => { image: 'italian.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'フレンチ' => { image: 'french.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'スペイン' => { image: 'spanish.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'インド' => { image: 'indian.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'タイ' => { image: 'thai.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'},
-      'メキシカン' => { image: 'mexican.webp', description: '中央に寿司が描かれており、周囲には美しい桜の花、波模様、酒壺などが描かれている。日本料理の洗練された技術と文化的豊かさを祝福し、その最高峰の知識と専門性を持つ者に与えられる称号。'}
-    } %>
-    <% @appetizer_genre_counts.each do |genre, count| %>
-      <% if genre_details[genre] && count >= 3 %>
-        <div class="w-full lg:w-1/3 md:w-1/2 p-4">
-          <div class="border-4 border-gray-500 bg-amber-50 shadow-xl rounded-lg p-4 h-full">
-            <p class="text-center font-bold mb-2"><%= genre %>マスター</p>
-            <div class="flex justify-center mb-5">
-              <%= image_tag(genre_details[genre][:image], alt: '#{genre}称号', size: '270x270', class: 'border-4 border-gray-600') %>
-            </div>
-            <div class="bg-gray-100 border-2 border-yellow-600 text-sm">
-              <%= genre_details[genre][:description] %>
-            </div>
-          </div>
+  <div class="flex justify-center border-b-2 pb-2 mb-5">
+    <h2 class="text-center text-xl font-bold">獲得したお酒の称号</h2>
+    <div class="dropdown dropdown-top dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+        <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+      <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+        <div tabindex="0" class="card-body">
+          <p class="">お酒のジャンル毎に3投稿以上で、称号を取得できます。</p>
         </div>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
+
+  <!-- application_helperでハッシュを定義 -->
+  <% alcohol_details %>
+
+  <!-- application_helperでお酒の称号表示を行う -->
+  <%= display_alcohol_awards(@alcohol_genre_counts, alcohol_details) %>
+
+  <div class="flex justify-center border-b-2 pb-2 mb-5">
+    <h2 class="text-center text-xl font-bold">獲得したおつまみの称号</h2>
+    <div class="dropdown dropdown-top dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+        <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+      <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+        <div tabindex="0" class="card-body">
+          <p class="">おつまみのジャンル毎に3投稿以上で、称号を取得できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- application_helperでハッシュを定義 -->
+  <% appetizer_details %>
+
+  <!-- application_helperでおつまみの称号表示を行う -->
+  <%= display_appetizer_awards(@appetizer_genre_counts, appetizer_details) %>
 </div>
