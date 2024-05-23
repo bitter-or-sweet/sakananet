@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    @alcohol_genre_counts = Post.joins(:alcohol_genre).where(user_id: current_user).group('alcohol_genres.genre').count
+    @appetizer_genre_counts = Post.joins(:appetizer_genre).where(user_id: current_user).group('appetizer_genres.genre').count
+  end
 
   def edit; end
 

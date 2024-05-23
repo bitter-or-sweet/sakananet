@@ -1,23 +1,97 @@
 <% content_for(:title, t('.title')) %>
-<div class="mx-auto w-5/6 max-w-screen-sm md:pt-24">
+<div class="mx-auto w-5/6 max-w-screen-lg md:pt-24">
   <h1 class="text-lg sm:text-2xl font-bold my-10 text-center"><%= t('.title') %></h1>
-  <div class="flex justify-start items-center mb-5">
-    <% if @user.avatar? %>
-      <%= image_tag @user.avatar.url, class:"rounded-[5px] w-20 h-20 mr-10" %>
-    <% else %>
-      <%= image_tag 'default.jpg', class:"rounded-[5px] w-20 h-20 mr-5" %>
-    <% end %>
+  <div class="flex justify-center items-center mb-5">
+    <%= display_user_avatar(@user, "rounded-[5px] w-20 h-20 mr-5") %>
     <div class="text-2xl">
-      <%= @user.name %>
+      <%= @user.name %><%= display_awards_icon(@alcohol_genre_counts, @appetizer_genre_counts) %>
     </div>
   </div>
-  <% if @user.profile? %>
-    <%= simple_format(@user.profile) %>
-  <% else %>
-    プロフィール未入力
-  <% end %>
-  <div class="flex flex-row mt-10">
-    <%= link_to '過去の投稿一覧を見る', user_posts_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500 mr-5' %>
-    <%= link_to 'AI組合せを見る', user_appetizers_path(@user), class: 'hover:text-yellow-400 hover:border-yellow-400 border-b border-gray-500' %>
+  <div class="text-center mb-16">
+    <%= @user.profile? ? simple_format(@user.profile) : "プロフィール未入力" %>
+    <div class="flex flex-wrap justify-center mt-16">
+      <%= link_to '過去の投稿を見る', user_posts_path(@user), class: 'bg-point hover:bg-yellow-400 shadow-xl my-5 rounded-full py-3 px-6 sm:w-auto w-full text-center mr:5 sm:mr-10' %>
+      <%= link_to 'AI組合せを見る', user_appetizers_path(@user), class: 'bg-point hover:bg-yellow-400 shadow-xl my-5 rounded-full py-3 px-6 sm:w-auto w-full text-center' %>
+    </div>
+  </div>
+  <div class="flex justify-center border-b-2 pb-2 mb-5">
+      <h2 class="text-center text-xl font-bold">各ジャンルの投稿数</h2>
+      <div class="dropdown dropdown-top dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+          <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+          <div tabindex="0" class="card-body">
+            <p class="">投稿数が3以上の場合、<i class="fa-regular fa-chess-king text-yellow-400"></i>が表示されます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if @alcohol_genre_counts.empty? %>
+      <p class="text-center">投稿がありません。</p>
+    <% end %>
+    <div class="flex md:w-2/3 mb-16 mx-auto">
+      <div class="w-1/2 flex sm:flex-row-reverse">
+        <div class="sm:w-2/3 flex flex-col">
+          <% @alcohol_genre_counts.each do |genre, count| %>
+            <% if count >= 3 %>
+              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% else %>
+              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="w-1/2">
+        <div class="sm:w-2/3 flex flex-col mx-auto">
+          <% @appetizer_genre_counts.each do |genre, count| %>
+            <% if count >= 3 %>
+              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% else %>
+              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center border-b-2 pb-2 mb-5">
+      <h2 class="text-center text-xl font-bold">獲得したお酒の称号</h2>
+      <div class="dropdown dropdown-top dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+          <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+          <div tabindex="0" class="card-body">
+            <p class="">お酒のジャンル毎に3投稿以上で、称号を取得できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- application_helperでハッシュを定義 -->
+    <% alcohol_details %>
+
+    <!-- application_helperでお酒の称号表示を行う -->
+    <%= display_alcohol_awards(@alcohol_genre_counts, alcohol_details) %>
+
+    <div class="flex justify-center border-b-2 pb-2 mb-5">
+      <h2 class="text-center text-xl font-bold">獲得したおつまみの称号</h2>
+      <div class="dropdown dropdown-top dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-circle btn-ghost btn-xs text-info">
+          <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
+          <div tabindex="0" class="card-body">
+            <p class="">おつまみのジャンル毎に3投稿以上で、称号を取得できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- application_helperでハッシュを定義 -->
+    <% appetizer_details %>
+
+    <!-- application_helperでおつまみの称号表示を行う -->
+    <%= display_appetizer_awards(@appetizer_genre_counts, appetizer_details) %>
   </div>
 </div>
