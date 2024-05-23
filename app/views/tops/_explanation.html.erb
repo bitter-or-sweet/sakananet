@@ -4,8 +4,8 @@
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
         <%= link_to '投稿一覧', posts_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
-          ユーザーが投稿したお酒&おつまみの投稿一覧です。<br>
-          タイトル・本文、お酒のジャンル、おつまみのジャンルで検索できます。
+          <p class="pb-2">ユーザーが投稿したお酒&おつまみの投稿一覧です。</p>
+          <p>タイトル・本文、お酒のジャンル、おつまみのジャンルで検索できます。</p>
         </div>
       </div>
       <div class="xl:w-1/2 flex justify-center">
@@ -32,7 +32,7 @@
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
         <%= link_to '投稿詳細', posts_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
-          <p>投稿一覧ページから投稿を選択すると、詳細情報を確認できます。</p>
+          <p class="pb-2">投稿一覧ページから投稿を選択すると、詳細情報を確認できます。</p>
           <p class="mb-5">投稿編集・削除、X・LINE共有、いいね、地図確認、コメントができます。</p>
           <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>投稿編集・削除、いいね、コメントは、ログインが必要です
         </div>
@@ -47,8 +47,8 @@
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
         <%= link_to 'AI組合せ', new_appetizer_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
-          <p>「このお酒には何が合うの？」</p>
-          <p>「家にある食材でおつまみ作れるかな？」</p>
+          <p class="pb-2">「このお酒には何が合うの？」</p>
+          <p class="pb-2">「家にある食材でおつまみ作れるかな？」</p>
           <p class="mb-5">そんな時は、お酒と3つの食材を選択して、AIに提案してもらいましょう!!</p>
           <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
         </div>
@@ -63,13 +63,13 @@
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
         <%= link_to 'マイページ', profile_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
-          <p>マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、</p>
+          <p class="pb-2">マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、</p>
           <p class="mb-5">プロフィール設定にアクセスできます。</p>
           <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
         </div>
       </div>
       <div class="xl:w-1/2 flex justify-center">
-        <img src="https://i.gyazo.com/ba46d5159443cf6b296d0a649f3c8ddf.gif" alt="マイページの操作動画" width="600"/>
+        <img src="https://i.gyazo.com/4189eb3d4b2435c0fce64cbf82af032d.gif" alt="マイページの操作動画" width="600"/>
       </div>
     </div>
   </div>
@@ -82,14 +82,30 @@
           <%= link_to 'AI組合せの回答結果', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <% end %>
         <div class="text-left py-3 xl:py-10 mx-auto">
-          <p>AI組合せの回答結果は、マイページより確認できます。</p>
-          <p>お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。</p>
+          <p class="pb-2">AI組合せの回答結果は、マイページより確認できます。</p>
+          <p class="pb-2">お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。</p>
           <p class="mb-5">X、LINEでの共有ができます。</p>
           <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
         </div>
       </div>
       <div class="xl:w-1/2 flex justify-center">
-        <img src="https://i.gyazo.com/7461ca229a2e6ae73fc35278f877cd0a.gif" alt="AI組合せ回答結果の操作動画" width="600"/>
+        <img src="https://i.gyazo.com/6f40048d50f326ce7f529f1816c06c97.gif" alt="AI組合せ回答結果の操作動画" width="600"/>
+      </div>
+    </div>
+  </div>
+  <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
+    <div class="flex flex-col xl:flex-row">
+      <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
+        <%= link_to '称号', profile_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <div class="text-left py-3 xl:py-10 mx-auto">
+          <p class="pb-2">ジャンル毎に投稿数が3以上になると称号を獲得できます。</p>
+          <p class="pb-2">マイページで獲得した称号を確認できます。</p>
+          <p class="mb-5">称号の合計が2以上で銀、4以上で金の王冠が名前の横に表示されます。</p>
+          <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
+        </div>
+      </div>
+      <div class="xl:w-1/2 flex justify-center">
+        <img src="https://i.gyazo.com/4189eb3d4b2435c0fce64cbf82af032d.gif" alt="マイページの操作動画" width="600"/>
       </div>
     </div>
   </div>
