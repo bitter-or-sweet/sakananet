@@ -19,6 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @alcohol_genre_counts = Post.joins(:alcohol_genre).where(user_id: params[:id]).group('alcohol_genres.genre').count
+    @appetizer_genre_counts = Post.joins(:appetizer_genre).where(user_id: params[:id]).group('appetizer_genres.genre').count
   end
 
   private
