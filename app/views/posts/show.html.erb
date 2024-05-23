@@ -11,7 +11,7 @@
           <div class="flex justify-start items-center">
             <%= link_to @post.user == current_user ? profile_path : user_path(@post.user), class:'hover:text-yellow-400 text-lg' do %>
               <div class="flex items-center hover:text-yellow-400 text-lg">
-                <%= display_user_avatar(@post.user) %><%=  @post.user.name %>
+                <%= display_user_avatar(@post.user) %><%= @post.user.name %><%= display_awards_icon(@alcohol_genre_counts, @appetizer_genre_counts) %>
               </div>
             <% end %>
           </div>

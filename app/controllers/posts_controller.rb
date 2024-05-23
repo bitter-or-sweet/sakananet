@@ -40,6 +40,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :asc)
+    @alcohol_genre_counts = Post.joins(:alcohol_genre).where(user_id: @post.user.id).group('alcohol_genres.genre').count
+    @appetizer_genre_counts = Post.joins(:appetizer_genre).where(user_id: params[:id]).group('appetizer_genres.genre').count
   end
 
   def edit; end
