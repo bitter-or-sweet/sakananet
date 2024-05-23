@@ -4,7 +4,7 @@
   <div class="flex justify-center items-center mb-5">
     <%= display_user_avatar(@user, "rounded-[5px] w-20 h-20 mr-5") %>
     <div class="text-2xl">
-      <%= @user.name %>
+      <%= @user.name %><%= display_awards_icon(@alcohol_genre_counts, @appetizer_genre_counts) %>
     </div>
   </div>
   <div class="text-center mb-16">
@@ -22,7 +22,7 @@
         </div>
         <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
           <div tabindex="0" class="card-body">
-            <p class="">投稿数が3以上の場合、<i class="fa-regular fa-chess-king text-yellow-500"></i>が表示されます。</p>
+            <p class="">投稿数が3以上の場合、<i class="fa-regular fa-chess-king text-yellow-400"></i>が表示されます。</p>
           </div>
         </div>
       </div>
@@ -30,24 +30,28 @@
     <% if @alcohol_genre_counts.empty? %>
       <p class="text-center">投稿がありません。</p>
     <% end %>
-    <div class="flex flex-wrap w-full md:w-1/2 mb-16 mx-auto">
-      <div class="w-1/2 flex flex-col">
-        <% @alcohol_genre_counts.each do |genre, count| %>
-          <% if count >= 3 %>
-            <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-500 mr-2"></i><%= "#{genre}: #{count}" %></p>
-          <% else %>
-            <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+    <div class="flex md:w-2/3 mb-16 mx-auto">
+      <div class="w-1/2 flex sm:flex-row-reverse">
+        <div class="sm:w-2/3 flex flex-col">
+          <% @alcohol_genre_counts.each do |genre, count| %>
+            <% if count >= 3 %>
+              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% else %>
+              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-      <div class="w-1/2 flex flex-col">
-        <% @appetizer_genre_counts.each do |genre, count| %>
-          <% if count >= 3 %>
-            <p class="text-center"><i class="fa-regular fa-chess-king text-yellow-500 mr-2"></i><%= "#{genre}: #{count}" %></p>
-          <% else %>
-            <p class="text-center"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+      <div class="w-1/2">
+        <div class="sm:w-2/3 flex flex-col mx-auto">
+          <% @appetizer_genre_counts.each do |genre, count| %>
+            <% if count >= 3 %>
+              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% else %>
+              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="flex justify-center border-b-2 pb-2 mb-5">

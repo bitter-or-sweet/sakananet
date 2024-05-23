@@ -114,4 +114,23 @@ module ApplicationHelper
       end.join.html_safe  # 配列の各要素を連結して安全なHTMLとして出力
     end
   end
+
+  def display_awards_icon(alcohol_genre_counts, appetizer_genre_counts)
+    award_count = 0
+    alcohol_genre_counts.each do |genre, count|
+      if count >= 3
+        award_count += 1
+      end
+    end
+    appetizer_genre_counts.each do |genre, count|
+      if count >= 3
+        award_count += 1
+      end
+    end
+    if award_count >= 4
+      content_tag(:i, '', class: 'fa-solid fa-chess-king text-yellow-400 ml-2')
+    elsif award_count >= 2
+      content_tag(:i, '', class: 'fa-solid fa-chess-king text-gray-300 ml-2')
+    end
+  end
 end
