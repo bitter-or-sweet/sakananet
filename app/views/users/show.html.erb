@@ -22,7 +22,7 @@
         </div>
         <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
           <div tabindex="0" class="card-body">
-            <p class="">投稿数が3以上の場合、<i class="fa-regular fa-chess-king text-yellow-400"></i>が表示されます。</p>
+            <p class="">投稿数が3以上の場合、<i class="fa-solid fa-check text-yellow-400"></i>が表示されます。</p>
           </div>
         </div>
       </div>
@@ -35,9 +35,9 @@
         <div class="sm:w-2/3 flex flex-col">
           <% @alcohol_genre_counts.each do |genre, count| %>
             <% if count >= 3 %>
-              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+              <p class="text-left"><i class="fa-solid fa-check text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
             <% else %>
-              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+              <p class="text-left"><i class="fa-solid fa-check opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
             <% end %>
           <% end %>
         </div>
@@ -46,9 +46,9 @@
         <div class="sm:w-2/3 flex flex-col mx-auto">
           <% @appetizer_genre_counts.each do |genre, count| %>
             <% if count >= 3 %>
-              <p class="text-left"><i class="fa-regular fa-chess-king text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
+              <p class="text-left"><i class="fa-solid fa-check text-yellow-400 mr-2"></i><%= "#{genre}: #{count}" %></p>
             <% else %>
-              <p class="text-left"><i class="fa-regular fa-chess-king opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
+              <p class="text-left"><i class="fa-solid fa-check opacity-0 mr-2"></i><%= "#{genre}: #{count}" %></p>
             <% end %>
           <% end %>
         </div>
@@ -62,7 +62,7 @@
         </div>
         <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
           <div tabindex="0" class="card-body">
-            <p class="">お酒のジャンル毎に3投稿以上で、称号を取得できます。</p>
+            <p class="">お酒のジャンル毎に3投稿以上で、称号を獲得できます。</p>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
         </div>
         <div tabindex="0" class="card compact dropdown-content z-[1] shadow bg-gray-200 rounded-box w-64">
           <div tabindex="0" class="card-body">
-            <p class="">おつまみのジャンル毎に3投稿以上で、称号を取得できます。</p>
+            <p class="">おつまみのジャンル毎に3投稿以上で、称号を獲得できます。</p>
           </div>
         </div>
       </div>

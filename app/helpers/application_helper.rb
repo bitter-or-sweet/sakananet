@@ -85,7 +85,7 @@ module ApplicationHelper
       qualified_genres.map do |genre, count|
         content_tag(:div, class: "w-full lg:w-1/3 sm:w-1/2 p-4") do
           concat(
-            content_tag(:div, class: "border-4 border-gray-500 bg-amber-50 shadow-xl rounded-lg p-4 h-full") do
+            content_tag(:div, class: "border-4 border-gray-500 bg-amber-100 shadow-xl rounded-lg p-4 h-full skeleton") do
               concat(content_tag(:p, "#{genre}マスター", class: "text-center font-bold mb-2"))
               concat(image_tag(alcohol_details[genre][:image], alt: "#{genre}称号", size: '270x270', class: 'border-4 border-gray-600 mb-2 mx-auto'))
               concat(content_tag(:div, alcohol_details[genre][:description], class: "bg-gray-100 border-2 border-yellow-600 text-xs max-w-72 mx-auto"))
@@ -104,7 +104,7 @@ module ApplicationHelper
       qualified_genres.map do |genre, count|
         content_tag(:div, class: "w-full lg:w-1/3 md:w-1/2 p-4") do
           concat(
-            content_tag(:div, class: "border-4 border-gray-500 bg-amber-50 shadow-xl rounded-lg p-4 h-full") do
+            content_tag(:div, class: "border-4 border-gray-500 bg-amber-100 shadow-xl rounded-lg p-4 h-full skeleton") do
               concat(content_tag(:p, "#{genre}マスター", class: "text-center font-bold mb-2"))
               concat(image_tag(appetizer_details[genre][:image], alt: "#{genre}称号", size: '270x270', class: 'border-4 border-gray-600 mb-2'))
               concat(content_tag(:div, appetizer_details[genre][:description], class: "bg-gray-100 border-2 border-yellow-600 text-xs"))
