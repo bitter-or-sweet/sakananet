@@ -24,7 +24,7 @@
 |トップ画面|ログイン機能|
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/4e42b99404d3134eacbfa74997982f53.gif)](https://gyazo.com/4e42b99404d3134eacbfa74997982f53)|[![Image from Gyazo](https://i.gyazo.com/0329bb6549e2c93b2617fc188ae4dc58.png)](https://gyazo.com/0329bb6549e2c93b2617fc188ae4dc58)|
-|機能説明の後に新規登録、ログイン、投稿一覧というユーザー導線に沿った流れにしました。機能説明では、それぞれに該当ページまたはそれに近いページへのリンクを設置し、慣れてない方でも操作しやすいようにしました。|なるべく多くのユーザーに登録いただけるように、Email、Google、LINEの3つのログイン方法を実装しました。|
+|使い方説明では、それぞれに該当ページまたはそれに近いページへのリンクを設置し、慣れてない方でも操作しやすいようにしました。|なるべく多くのユーザーに登録いただけるように、Email、Google、LINEの3つのログイン方法を実装しました。|
 
 |投稿一覧|投稿|
 |:-:|:-:|
@@ -54,8 +54,7 @@
 |データベース|PostgreSQL|
 |開発環境|Docker|
 |インフラ|Render|
-|Web API|Open AI(GPT-4-turbo), Google Maps(Maps JavaScript, Geocoding, Places)<br>
-Google Sign-In, LINE Login|
+|Web API|Open AI(GPT-4-turbo), Google Maps, Google Sign-In, LINE Login|
 |その他|Amazon S3|
 
 ## ER図
