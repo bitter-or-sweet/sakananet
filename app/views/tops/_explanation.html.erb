@@ -61,6 +61,25 @@
   <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
     <div class="flex flex-col xl:flex-row">
       <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
+        <% if logged_in? %>
+          <%= link_to 'AI組合せの回答結果', user_appetizers_path(current_user), class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <% else %>
+          <%= link_to 'AI組合せの回答結果', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
+        <% end %>
+        <div class="text-left py-3 xl:py-10 mx-auto">
+          <p class="pb-2">お酒、おつまみの組合せ解説、使用材料・分量、作り方が表示されます。</p>
+          <p class="mb-5">X、LINEでの共有ができます。</p>
+          <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
+        </div>
+      </div>
+      <div class="xl:w-1/2 flex justify-center">
+        <img src="https://i.gyazo.com/466721182ae16a69202106f177bf1832.png" alt="AI組合せ回答結果の画像" width="600"/>
+      </div>
+    </div>
+  </div>
+  <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
+    <div class="flex flex-col xl:flex-row">
+      <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
         <%= link_to 'マイページ', profile_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
         <div class="text-left py-3 xl:py-10 mx-auto">
           <p class="pb-2">マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、</p>
@@ -70,26 +89,6 @@
       </div>
       <div class="xl:w-1/2 flex justify-center">
         <img src="https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif" alt="マイページの操作動画" width="600"/>
-      </div>
-    </div>
-  </div>
-  <div class="border bg-amber-50 shadow-xl rounded-lg px-6 py-4 mb-10">
-    <div class="flex flex-col xl:flex-row">
-      <div class="xl:w-1/2 text-left flex flex-col justify-center xl:pt-10">
-        <% if logged_in? %>
-          <%= link_to 'AI組合せの回答結果', user_appetizers_path(current_user), class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
-        <% else %>
-          <%= link_to 'AI組合せの回答結果', login_path, class: 'text-lg font-bold bg-yellow-400 rounded-lg shadow-lg hover:bg-yellow-300 px-4 py-2 mx-auto' %>
-        <% end %>
-        <div class="text-left py-3 xl:py-10 mx-auto">
-          <p class="pb-2">AI組合せの回答結果は、マイページより確認できます。</p>
-          <p class="pb-2">お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。</p>
-          <p class="mb-5">X、LINEでの共有ができます。</p>
-          <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i>ログインが必要です
-        </div>
-      </div>
-      <div class="xl:w-1/2 flex justify-center">
-        <img src="https://i.gyazo.com/fdb31dd93111d59e129919bc0e8e859a.gif" alt="AI組合せ回答結果の操作動画" width="600"/>
       </div>
     </div>
   </div>
