@@ -1,5 +1,5 @@
-# サービス名： 酒菜ネット
-[![Image from Gyazo](https://i.gyazo.com/394eb30ba3b02dd836cd813513253eee.png)](https://gyazo.com/394eb30ba3b02dd836cd813513253eee)
+# サービス名： [酒菜ネット](https://www.sakana-net.com/)
+[![Image from Gyazo](https://i.gyazo.com/394eb30ba3b02dd836cd813513253eee.png)](https://www.sakana-net.com/)
 
 ## ■サービス概要
 晩酌はどんなメニューにしようか悩むという方、よく合うお酒とおつまみの組合せを知りたい方、晩酌がマンネリ化している方に向けたお酒・おつまみの情報共有サービスです。
@@ -23,8 +23,8 @@
 ## ■ 機能紹介
 |トップ画面|ログイン機能|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/4e42b99404d3134eacbfa74997982f53.gif)](https://gyazo.com/4e42b99404d3134eacbfa74997982f53)|[![Image from Gyazo](https://i.gyazo.com/08a270c5f937a1857e7f8f8a7be6b576.png)](https://gyazo.com/08a270c5f937a1857e7f8f8a7be6b576)|
-|機能説明の後に新規登録、ログイン、投稿一覧というユーザー導線に沿った流れにしました。機能説明では、それぞれに該当ページまたはそれに近いページへのリンクを設置し、慣れてない方でも操作しやすいようにしました。|Email、Google、LINEの3つのログイン方法を実装しました。|
+|[![Image from Gyazo](https://i.gyazo.com/4e42b99404d3134eacbfa74997982f53.gif)](https://gyazo.com/4e42b99404d3134eacbfa74997982f53)|[![Image from Gyazo](https://i.gyazo.com/0329bb6549e2c93b2617fc188ae4dc58.png)](https://gyazo.com/0329bb6549e2c93b2617fc188ae4dc58)|
+|機能説明の後に新規登録、ログイン、投稿一覧というユーザー導線に沿った流れにしました。機能説明では、それぞれに該当ページまたはそれに近いページへのリンクを設置し、慣れてない方でも操作しやすいようにしました。|なるべく多くのユーザーに登録いただけるように、Email、Google、LINEの3つのログイン方法を実装しました。|
 
 |投稿一覧|投稿|
 |:-:|:-:|
@@ -33,17 +33,17 @@
 
 |投稿詳細|AI組合せ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/1030404ee51cec007b275189a2f70dfe.gif)](https://gyazo.com/1030404ee51cec007b275189a2f70dfe)|[![Image from Gyazo](https://i.gyazo.com/3db1c34c544e49fa75cfde746ead8a27.gif)](https://gyazo.com/3db1c34c544e49fa75cfde746ead8a27)|
+|[![Image from Gyazo](https://i.gyazo.com/3091a9a7fcd06c379d353d892c53cb3c.gif)](https://gyazo.com/3091a9a7fcd06c379d353d892c53cb3c)|[![Image from Gyazo](https://i.gyazo.com/3db1c34c544e49fa75cfde746ead8a27.gif)](https://gyazo.com/3db1c34c544e49fa75cfde746ead8a27)|
 |投稿一覧ページから投稿を選択すると、詳細情報を確認できます。投稿編集・削除、X・LINE共有、いいね、地図確認、コメントができます。|お酒と3つの食材を選択すると、OpenAIが3つの食材を使った、お酒に合うおつまみを提案します。|
 
 |AI組合せの回答結果|マイページ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/466721182ae16a69202106f177bf1832.png)](https://gyazo.com/466721182ae16a69202106f177bf1832)|https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif|
+|[![Image from Gyazo](https://i.gyazo.com/466721182ae16a69202106f177bf1832.png)](https://gyazo.com/466721182ae16a69202106f177bf1832)|[![Image from Gyazo](https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif)](https://gyazo.com/00c708a9a477a03f899ca7a13a58a18c)|
 |お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。X、LINEでの共有ができます。|マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、プロフィール設定にアクセスできます。|
 
 |称号|プロフィールページ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/0a62bb759b52eecef2f831014391bc8c.gif)](https://gyazo.com/0a62bb759b52eecef2f831014391bc8c)||
+|[![Image from Gyazo](https://i.gyazo.com/0a62bb759b52eecef2f831014391bc8c.gif)](https://gyazo.com/0a62bb759b52eecef2f831014391bc8c)|[![Image from Gyazo](https://i.gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a.gif)](https://gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a)|
 |ジャンル毎に投稿数が3以上になると称号を獲得できます。マイページで獲得した称号を確認できます。称号の合計が2以上で銀、4以上で金の王冠が名前の横に表示されます。|投稿一覧のユーザー名を選択すると、他者のプロフィールページにアクセスできます。マイページとほぼ同様です。|
 
 ## ■ 使用技術
@@ -54,7 +54,8 @@
 |データベース|PostgreSQL|
 |開発環境|Docker|
 |インフラ|Render|
-|Web API|Open AI API(GPT-4-turbo), Google Maps API(Maps JavaScript, Geocoding, Places), LINE Login, Google Sign-In|
+|Web API|Open AI(GPT-4-turbo), Google Maps(Maps JavaScript, Geocoding, Places)<br>
+Google Sign-In, LINE Login|
 |その他|Amazon S3|
 
 ## ER図
