@@ -12,4 +12,9 @@
       いいね済みの投稿はありません
     </div>
   <% end %>
+  <div class="flex justify-center">
+    <% if @like_posts.total_pages > 1 %>
+      <%= paginate @like_posts %>
+    <% end %>
+  </div>
 </div>
