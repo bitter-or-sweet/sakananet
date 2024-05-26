@@ -23,7 +23,7 @@
 ## ■ 機能紹介
 |トップ画面|ログイン機能|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/4e42b99404d3134eacbfa74997982f53.gif)](https://gyazo.com/4e42b99404d3134eacbfa74997982f53)|[![Image from Gyazo](https://i.gyazo.com/0329bb6549e2c93b2617fc188ae4dc58.png)](https://gyazo.com/0329bb6549e2c93b2617fc188ae4dc58)|
+|[![Image from Gyazo](https://i.gyazo.com/4e42b99404d3134eacbfa74997982f53.gif)](https://gyazo.com/4e42b99404d3134eacbfa74997982f53)|[![Image from Gyazo](https://i.gyazo.com/e0887b0db3450658643110dbf91cda12.gif)](https://gyazo.com/e0887b0db3450658643110dbf91cda12)|
 |使い方説明では、それぞれに該当ページまたはそれに近いページへのリンクを設置し、慣れてない方でも操作しやすいようにしました。|なるべく多くのユーザーに登録いただけるように、Email、Google、LINEの3つのログイン方法を実装しました。|
 
 |投稿一覧|投稿|
@@ -38,13 +38,13 @@
 
 |AI組合せの回答結果|マイページ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/466721182ae16a69202106f177bf1832.png)](https://gyazo.com/466721182ae16a69202106f177bf1832)|[![Image from Gyazo](https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif)](https://gyazo.com/00c708a9a477a03f899ca7a13a58a18c)|
+|[![Image from Gyazo](https://i.gyazo.com/29d00e59f21e394675824de170148c4f.gif)](https://gyazo.com/29d00e59f21e394675824de170148c4f)|[![Image from Gyazo](https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif)](https://gyazo.com/00c708a9a477a03f899ca7a13a58a18c)|
 |お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。X、LINEでの共有ができます。|マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、プロフィール設定にアクセスできます。|
 
 |称号|プロフィールページ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/0a62bb759b52eecef2f831014391bc8c.gif)](https://gyazo.com/0a62bb759b52eecef2f831014391bc8c)|[![Image from Gyazo](https://i.gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a.gif)](https://gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a)|
-|ジャンル毎に投稿数が3以上になると称号を獲得できます。マイページで獲得した称号を確認できます。称号の合計が2以上で銀、4以上で金の王冠が名前の横に表示されます。|投稿一覧のユーザー名を選択すると、他者のプロフィールページにアクセスできます。マイページとほぼ同様です。|
+|[![Image from Gyazo](https://i.gyazo.com/19aeb211ceace789d0ffb450ff6db970.gif)](https://gyazo.com/19aeb211ceace789d0ffb450ff6db970)|[![Image from Gyazo](https://i.gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a.gif)](https://gyazo.com/2dd2bda3bc0c942ef097a2dadec81f0a)|
+|ジャンル毎に投稿数が3以上になると称号を獲得できます。称号の合計が2以上で銀、4以上で金の王冠が名前の横に表示されます。|投稿一覧のユーザー名を選択すると、他者のプロフィールページにアクセスできます。マイページとほぼ同様です。|
 
 ## ■ 使用技術
 |カテゴリ|技術|
