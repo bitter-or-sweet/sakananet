@@ -38,7 +38,7 @@
 
 |AI組合せの回答結果|マイページ|
 |:-:|:-:|
-|[![Image from Gyazo](https://i.gyazo.com/29d00e59f21e394675824de170148c4f.gif)](https://gyazo.com/29d00e59f21e394675824de170148c4f)|[![Image from Gyazo](https://i.gyazo.com/00c708a9a477a03f899ca7a13a58a18c.gif)](https://gyazo.com/00c708a9a477a03f899ca7a13a58a18c)|
+|[![Image from Gyazo](https://i.gyazo.com/29d00e59f21e394675824de170148c4f.gif)](https://gyazo.com/29d00e59f21e394675824de170148c4f)|[![Image from Gyazo](https://i.gyazo.com/e35611070749de1ead2ce32c2a8aa120.gif)](https://gyazo.com/e35611070749de1ead2ce32c2a8aa120)|
 |お酒、おつまみの組合せ解説、使用材料、作り方が表示されます。X、LINEでの共有ができます。|マイページから、過去の投稿一覧、いいねした投稿一覧、AI組合せ一覧、プロフィール設定にアクセスできます。|
 
 |称号|プロフィールページ|
