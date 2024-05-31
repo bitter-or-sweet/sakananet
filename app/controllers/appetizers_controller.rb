@@ -16,12 +16,17 @@ class AppetizersController < ApplicationController
   def create
     @appetizer = current_user.appetizers.build(appetizer_params)
     begin
-      service = CreateAppetizerService.new(@appetizer, @api_key)
-      if service.call
-        redirect_to appetizer_path(@appetizer), notice: "回答結果を取得しました"
+      if @appetizer.valid?
+        service = CreateAppetizerService.new(@appetizer, @api_key)
+        if service.call
+          redirect_to appetizer_path(@appetizer), notice: "回答結果を取得しました"
+        else
+          flash.now[:alert] = "回答結果を取得できませんでした。ページを更新後、もう一度お試しください。"
+          render 'new', status: :unprocessable_entity
+        end
       else
-        flash.now[:alert] = "回答結果を取得できませんでした"
-        render 'new', status: :unprocessable_entity
+        flash.now[:alert] = "選択されていない項目があります"
+        render :new, status: :unprocessable_entity
       end
     rescue OpenaiAppetizerGenerator::OpenAIError => e
       flash.now[:alert] = e.message
