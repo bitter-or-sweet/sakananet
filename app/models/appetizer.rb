@@ -5,5 +5,5 @@ class Appetizer < ApplicationRecord
   belongs_to :user
   belongs_to :alcohol
 
-  validates :base_ingredient, :sub_ingredient, :accent_ingredient, presence: true
+  validates :alcohol_id, :base_ingredient_id, :sub_ingredient_id, :accent_ingredient_id, presence: true
 end
