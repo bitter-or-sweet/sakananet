@@ -21,7 +21,7 @@ class CreateAppetizerService
 
   def extract_appetizer_data(response)
     # AIの回答からおつまみの名前、解説、材料、分量、手順を抽出
-    match = response.match(/おつまみ:\s*(.+?)\s*解説:\s*(.+?)\s*材料\(最大5個\):(.+?)手順:\s*([\s\S]+)/m)
+    match = response.match(/おつまみ:\s*(.+?)\n解説:\s*(.+?)\n材料:(.+?)手順:\s*([\s\S]+)/m)
     return [] unless match
     name = match[1].strip
     description = match[2].strip
@@ -29,7 +29,7 @@ class CreateAppetizerService
     steps = match[4].strip
 
     # 材料リストの抽出
-    ingredients = ingredients_text.scan(/材料\d+: ([^\n:]+):([^\n]+)/).map do |ingredient_name, quantity|
+    ingredients = ingredients_text.scan(/材料\d+:\s*([^:]+)-([^:\n]+)/).map do |ingredient_name, quantity|
       { name: ingredient_name.strip, amount: quantity.strip }
     end
 
@@ -41,7 +41,7 @@ class CreateAppetizerService
       "材料#{index}: #{ingredient[:name]} - #{ingredient[:amount]}"
     end.join("\n")
 
-    responce_text = "#{description}\n材料(最大5個):\n#{ingredients_text}\n手順:\n#{steps}"
+    responce_text = "#{description}\n材料:\n#{ingredients_text}\n手順:\n#{steps}"
     full_description = responce_text.gsub(/(?<!^)(ステップ\d+:)/, "\n\\1")
 
     ActiveRecord::Base.transaction do
