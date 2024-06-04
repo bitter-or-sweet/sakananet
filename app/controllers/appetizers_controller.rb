@@ -62,8 +62,8 @@ class AppetizersController < ApplicationController
 
   def set_description_steps
     @appetizer = Appetizer.find(params[:id])
-    # 元のテキストを "材料(最大5個):" で分割
-    parts = @appetizer.description.split("材料(最大5個):")
+    # 元のテキストを "材料:" で分割
+    parts = @appetizer.description.split("材料:")
     description = parts[0].strip if parts.size > 1
     ingredients_and_steps = parts[1].strip if parts.size > 1
 

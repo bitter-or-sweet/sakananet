@@ -19,6 +19,7 @@ class OpenaiAppetizerGenerator
         }
       )
       # レスポンスが問題なく返ってきているかをチェック
+      p response
       if response.key?('choices') && response['choices'].any?
         response.dig('choices', 0, 'message', 'content')
       else
@@ -74,18 +75,19 @@ class OpenaiAppetizerGenerator
     # 出力フォーマット
     おつまみ:おつまみの名前
     解説:おつまみの解説
-    材料(最大5個):
-    材料1: 材料名:2人前分量
-    材料2: 材料名:2人前分量
-    材料3: 材料名:2人前分量
-    材料4: 材料名:2人前分量
-    材料5: 材料名:2人前分量
+    材料:
+    材料1: 材料名-分量
+    材料2: 材料名-分量
+    材料3: 材料名-分量
+    材料4: 材料名-分量
+    材料5: 材料名-分量
     手順:
     ステップ1: [詳細な説明]
     ステップ2: [詳細な説明]
     ステップ3: [詳細な説明]
 
     # 条件
-    300トークン以内で出力"
+    300トークン以内で出力
+    分量は２人前"
   end
 end
