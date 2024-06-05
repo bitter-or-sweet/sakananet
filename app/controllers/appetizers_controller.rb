@@ -62,30 +62,20 @@ class AppetizersController < ApplicationController
 
   def set_description_steps
     @appetizer = Appetizer.find(params[:id])
-    # 元のテキストを "材料:" で分割
-    parts = @appetizer.description.split("材料:")
-    description = parts[0].strip if parts.size > 1
-    ingredients_and_steps = parts[1].strip if parts.size > 1
+    description_parts = @appetizer.description.match(/^(.+?)\n材料(?:\(.*\))?:\s*(.+?)\n手順:\s*(.+)$/m)
+    return unless description_parts # マッチしない場合は処理を中断
 
-    # ingredients_and_stepsを "手順:" で分割
-    if ingredients_and_steps
-      ingredients_part, steps_part = ingredients_and_steps.split("\n手順:", 2).map(&:strip)
-    else
-      ingredients_part = ""
-      steps_part = ""
-    end
-
-    description = description.sub('解説: ', '').strip if description
+    @description = description_parts[1].strip.sub('解説: ', '').strip
+    ingredients_text = description_parts[2].strip
+    steps_text = description_parts[3].strip
 
     # 材料名と量を抽出
-    @ingredients = ingredients_part.scan(/材料\d+: ([^\n-]+) - ([^\n]+)/).map do |name, amount|
+    @ingredients = ingredients_text.scan(/材料\d+: ([^\n-]+) - ([^\n]+)/).map do |name, amount|
       { name: name.strip, amount: amount.strip }
     end
 
-    steps_text = "ステップ1:" + steps_part
     steps = steps_text.scan(/ステップ\d+: ([^\n]+)/)
 
-    @description = description
     @first_step = steps[0] ? steps[0][0] : nil
     @second_step = steps[1] ? steps[1][0] : nil
     @third_step = steps[2] ? steps[2][0] : nil
