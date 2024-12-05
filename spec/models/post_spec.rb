@@ -50,4 +50,12 @@ RSpec.describe User, type: :model do
       expect(post.errors.full_messages).to include("おつまみは20文字以内で入力してください")
     end
   end
+
+  describe 'アソシエーションチェック' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:alcohol_genre) }
+    it { is_expected.to belong_to(:appetizer_genre) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+  end
 end
