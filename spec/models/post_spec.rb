@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Post, type: :model do
   describe 'バリデーションチェック' do
     it '設定したすべてのバリデーションが機能しているか' do
       post = build(:post)
