@@ -19,12 +19,7 @@ RSpec.describe Like, type: :model do
   end
 
   describe 'アソシエーションチェック' do
-    it 'likeとuserが多対1の関係になっている' do
-      expect(described_class.reflect_on_association(:user).macro).to eq(:belongs_to)
-    end
-
-    it 'likeとpostが多対1の関係になっている' do
-      expect(described_class.reflect_on_association(:post).macro).to eq(:belongs_to)
-    end
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:post) }
   end
 end
