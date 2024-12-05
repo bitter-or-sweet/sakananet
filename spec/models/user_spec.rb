@@ -47,11 +47,11 @@ RSpec.describe User, type: :model do
   end
 
   describe 'アソシエーションチェック' do
-    it { should have_many(:posts).dependent(:destroy) }
-    it { should have_many(:comments).dependent(:destroy) }
-    it { should have_many(:likes).dependent(:destroy) }
-    it { should have_many(:like_posts).through(:likes).source(:post) }
-    it { should have_many(:appetizers) }
-    it { should have_many(:authentications).dependent(:destroy) }
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+    it { is_expected.to have_many(:like_posts).through(:likes).source(:post) }
+    it { is_expected.to have_many(:appetizers) }
+    it { is_expected.to have_many(:authentications).dependent(:destroy) }
   end
 end
