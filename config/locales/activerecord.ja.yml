@@ -23,3 +23,5 @@ ja:
         post_image: お酒&おつまみの画像（任意）
       comment:
         body: コメント
+      alcohol_genre:
+        genre: お酒のジャンル
