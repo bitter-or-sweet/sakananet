@@ -20,4 +20,9 @@ RSpec.describe Comment, type: :model do
 			expect(comment.errors.full_messages).to include("コメントは100文字以内で入力してください")
 		end
 	end
+
+	describe 'アソシエーションチェック' do
+		it { is_expected.to belong_to(:user) }
+		it { is_expected.to belong_to(:post) }
+	end
 end
