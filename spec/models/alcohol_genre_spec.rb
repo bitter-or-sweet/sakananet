@@ -14,4 +14,9 @@ RSpec.describe AlcoholGenre, type: :model do
 			expect(genre.errors.full_messages).to include("お酒のジャンルを入力してください")
 		end
 	end
+
+	describe 'アソシエーションチェック' do
+		it { is_expected.to have_many(:posts) }
+		it { is_expected.to have_many(:alcohols) }
+	end
 end
