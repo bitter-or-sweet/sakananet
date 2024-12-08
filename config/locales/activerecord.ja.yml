@@ -27,3 +27,5 @@ ja:
         genre: お酒のジャンル
       appetizer_genre:
         genre: おつまみのジャンル
+      alcohol:
+        name: お酒の名前
