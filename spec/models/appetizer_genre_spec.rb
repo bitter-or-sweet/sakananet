@@ -14,4 +14,8 @@ RSpec.describe AppetizerGenre, type: :model do
 			expect(appetizer_genre.errors.full_messages).to include("おつまみのジャンルを入力してください")
 		end
 	end
+
+	describe 'アソシエーションチェック' do
+		it { is_expected.to have_many(:posts) }
+	end
 end
