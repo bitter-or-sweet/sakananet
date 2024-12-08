@@ -25,3 +25,5 @@ ja:
         body: コメント
       alcohol_genre:
         genre: お酒のジャンル
+      appetizer_genre:
+        genre: おつまみのジャンル
