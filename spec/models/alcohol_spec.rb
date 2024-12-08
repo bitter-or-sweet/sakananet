@@ -20,4 +20,9 @@ RSpec.describe Alcohol, type: :model do
 			expect(alcohol.errors.full_messages).to include("お酒の名前は30文字以内で入力してください")
 		end
 	end
+
+	describe 'アソシエーションチェック' do
+		it { is_expected.to belong_to(:alcohol_genre) }
+		it { is_expected.to have_many(:appetizers) }
+	end
 end
