@@ -20,4 +20,10 @@ RSpec.describe Ingredient, type: :model do
 			expect(ingredient.errors.full_messages).to include("食材の名前は30文字以内で入力してください")
 		end
 	end
+
+	describe 'アソシエーションチェック' do
+		it { is_expected.to have_many(:appetizers_as_base) }
+		it { is_expected.to have_many(:appetizers_as_sub) }
+		it { is_expected.to have_many(:appetizers_as_accent) }
+	end
 end
