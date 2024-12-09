@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Post, type: :model do
   describe 'バリデーションチェック' do
     it '設定したすべてのバリデーションが機能しているか' do
       post = build(:post)
@@ -49,5 +49,13 @@ RSpec.describe User, type: :model do
       expect(post).to be_invalid
       expect(post.errors.full_messages).to include("おつまみは20文字以内で入力してください")
     end
+  end
+
+  describe 'アソシエーションチェック' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:alcohol_genre) }
+    it { is_expected.to belong_to(:appetizer_genre) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
   end
 end

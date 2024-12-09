@@ -45,4 +45,13 @@ RSpec.describe User, type: :model do
       expect(user2.errors.full_messages).to include("メールアドレスはすでに存在します")
     end
   end
+
+  describe 'アソシエーションチェック' do
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+    it { is_expected.to have_many(:like_posts).through(:likes).source(:post) }
+    it { is_expected.to have_many(:appetizers) }
+    it { is_expected.to have_many(:authentications).dependent(:destroy) }
+  end
 end
