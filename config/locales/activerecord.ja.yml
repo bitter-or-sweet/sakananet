@@ -29,3 +29,5 @@ ja:
         genre: おつまみのジャンル
       alcohol:
         name: お酒の名前
+      ingredient:
+        name: 食材の名前
