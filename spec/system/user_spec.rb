@@ -62,5 +62,14 @@ RSpec.describe 'Users', type: :system do
         end
       end
     end
+
+    describe 'マイページ' do
+      context 'ログインしていない状態' do
+        it 'マイページへのアクセスが失敗する' do
+          visit user_path(user)
+          expect(current_path).to eq login_path
+        end
+      end
+    end
   end
 end
