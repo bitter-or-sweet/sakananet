@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
+  include LoginMacros
   let(:user) { create(:user) }
 
   describe 'ログイン前' do
@@ -68,6 +69,28 @@ RSpec.describe 'Users', type: :system do
         it 'マイページへのアクセスが失敗する' do
           visit user_path(user)
           expect(current_path).to eq login_path
+        end
+      end
+    end
+
+    describe 'プロフィールページ' do
+      context 'ログインしていない状態' do
+        it 'プロフィールページへのアクセスに失敗する' do
+          visit user_path(user)
+          expect(current_path).to eq login_path
+        end
+      end
+    end
+  end
+
+  describe 'ログイン後' do
+    before { login(user) }
+
+    describe 'プロフィールページ' do
+      context 'ログインしている状態' do
+        it 'プロフィールページへのアクセスが成功する' do
+          visit user_path(user)
+          expect(current_path).to eq user_path(user)
         end
       end
     end
