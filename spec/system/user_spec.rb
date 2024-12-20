@@ -85,11 +85,10 @@ RSpec.describe 'Users', type: :system do
   end
 
   describe 'ログイン後' do
-    before { login(user) }
-
     describe 'プロフィールページ' do
       context 'ログインしている状態' do
         it 'プロフィールページへのアクセスが成功する' do
+          login(user)
           visit user_path(other_user)
           expect(current_path).to eq user_path(other_user)
         end
