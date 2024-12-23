@@ -68,7 +68,10 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
+    unless @post
+      redirect_to posts_path, alert: '投稿が見つかりません。'
+    end
   end
 
   def post_params
