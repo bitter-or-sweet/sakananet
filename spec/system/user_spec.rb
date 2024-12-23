@@ -89,7 +89,7 @@ RSpec.describe 'Users', type: :system do
       context 'ログインしている状態' do
         it 'プロフィールページへのアクセスが成功する' do
           login(user)
-          sleep(0.1)
+          expect(page).to have_content 'ログインしました'
           visit user_path(other_user)
           expect(current_path).to eq user_path(other_user)
         end
