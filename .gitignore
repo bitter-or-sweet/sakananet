@@ -38,6 +38,7 @@
 .env
 
 /public/uploads
+/spec/fixtures/images
 
 config/settings.local.yml
 config/settings/*.local.yml
