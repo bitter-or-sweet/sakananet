@@ -60,6 +60,7 @@ RSpec.describe 'Posts', type: :system do
 					select '和食', from: 'post[appetizer_genre_id]'
 					fill_in '感想（任意）', with: 'test_content'
 					fill_in 'address', with: 'test_place'
+					attach_file 'post[post_image]', File.join(Rails.root, 'spec/fixtures/images/test.jpg')
 					click_button '投稿する'
 					expect(page).to have_content '投稿を作成しました'
 					expect(current_path).to eq posts_path
