@@ -54,4 +54,12 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:appetizers) }
     it { is_expected.to have_many(:authentications).dependent(:destroy) }
   end
+
+  describe 'アバター画像アップロード' do
+    it 'アップロードする画像が有効' do
+      user = build(:user)
+      user.avatar = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/images/test.jpg'))
+      expect(user.avatar?).to be true
+    end
+  end
 end

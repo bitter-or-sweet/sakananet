@@ -14,6 +14,7 @@ RSpec.describe 'Users', type: :system do
           fill_in 'メールアドレス', with: 'email@example.com'
           fill_in 'パスワード', with: 'password'
           fill_in 'パスワード確認', with: 'password'
+          attach_file 'user[avatar]', File.join(Rails.root, 'spec/fixtures/images/test.jpg')
           click_button '新規登録'
           expect(page).to have_content 'ユーザー登録が完了しました'
           expect(current_path).to eq root_path

@@ -58,4 +58,12 @@ RSpec.describe Post, type: :model do
     it { is_expected.to have_many(:comments).dependent(:destroy) }
     it { is_expected.to have_many(:likes).dependent(:destroy) }
   end
+
+  describe '投稿画像アップロード' do
+    it 'アップロードする画像が有効' do
+      post = build(:post)
+      post.post_image = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/images/test.jpg'))
+      expect(post.post_image?).to be true
+    end
+  end
 end
