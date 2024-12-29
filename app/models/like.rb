@@ -11,8 +11,8 @@ class Like < ApplicationRecord
     return if self.user_id == self.likeable.user_id
     if self.likeable
       Notification.create(
-        sender_id: self.user_id
-        recipient_id: self.likeable.user_id
+        sender_id: self.user_id,
+        recipient_id: self.likeable.user_id,
         notifiable: self
       )
     end
