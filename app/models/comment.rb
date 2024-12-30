@@ -9,11 +9,11 @@ class Comment < ApplicationRecord
   private
 
   def create_comment_notification
-    return if self.user_id == self.commentable.user_id
-    if self.commentable
+    return if self.user_id == self.post.user_id
+    if self.post
       Notification.create(
         sender_id: self.user_id,
-        recipient_id: self.commentable.user_id,
+        recipient_id: self.post.user_id,
         notifiable: self
       )
     end
