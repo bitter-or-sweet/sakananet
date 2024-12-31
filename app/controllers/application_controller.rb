@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_notification_objects
-    @notifications = current_user.received_notifications.unread.order(create_at: :desc) if current_user
+    @notifications = current_user.received_notifications.unread.order(created_at: :desc) if current_user
   end
 end
