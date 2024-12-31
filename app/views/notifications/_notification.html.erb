@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(notification) do %>
+  <li data-notification-id="<%= notification.id %>" class="<%= notification.unread ? 'unread' : '' %>">
+    <%= link_to notification_path(notification),
+    class: "text-amber-300",
+    method: :patch,
+    data: { turbo_method: :patch } do %>
+                <i class="fa-regular fa-square-check mr-2"></i>
+              <% end %>
+    <%= generate_notification_message(notification)%>
+    <span class="notification-time ml-3"><%= time_ago_in_words(notification.created_at) %> 前</span>
+  </li>
+<% end %>
