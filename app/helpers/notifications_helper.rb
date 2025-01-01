@@ -13,6 +13,6 @@ module NotificationsHelper
   end
 
   def generate_post_link(post)
-    link_to post.title, post_path(post), class: "link", data: { turbo: false }
+    link_to post.title, post_path(post), class: "link hover:text-yellow-400", data: { turbo: false }
   end
 end
