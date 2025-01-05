@@ -1,18 +1,16 @@
-<ul tabindex="0" class="absolute -right-16 dropdown-content z-[1] p-2 text-sm shadow bg-base-100 rounded-box" style="width: 500px;">
-  <%= turbo_frame_tag 'notifications' do %>
-    <% if @notifications.present? %>
-              <div class="flex justify-center items-center">
-                <%= link_to '全てを既読する', mark_all_as_read_notifications_path,
-                class: 'bg-point hover:bg-yellow-400 rounded-[10px] px-3 py-2',
-                method: :delete,
-                remote: true,
-                data: {turbo_method: :delete } %>
-              </div>
-              <% @notifications.each do |notification| %>
-                  <%= render 'notifications/notification', { notification: notification } %>
-              <% end %>
-    <% else %>
-        <%= render 'notifications/no_notification' %>
+<%= turbo_frame_tag 'notifications' do %>
+  <% if @notifications.present? %>
+    <div class="flex justify-center items-center">
+      <%= link_to '全てを既読する', mark_all_as_read_notifications_path,
+      class: 'bg-point hover:bg-yellow-400 rounded-[10px] px-3 py-2',
+      method: :delete,
+      remote: true,
+      data: {turbo_method: :delete } %>
+    </div>
+    <% @notifications.each do |notification| %>
+        <%= render 'notifications/notification', { notification: notification } %>
     <% end %>
+  <% else %>
+      <%= render 'notifications/no_notification' %>
   <% end %>
-</ul>
+<% end %>

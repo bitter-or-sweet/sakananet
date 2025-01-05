@@ -18,6 +18,9 @@ module.exports = {
       colors: {
         theme: "#E07900",
         point: "#FFE8AC"
+      },
+      width: {
+        '96': '24rem'
       }
     }
   }
