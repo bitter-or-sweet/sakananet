@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'notification_count' do %>
+  <% if current_user.received_notifications.unread.present? %>
+    <span class="absolute -top-2 -right-4 text-sm text-red-600 bg-white rounded-lg px-1">
+      <%= current_user.received_notifications.unread.size %>
+    </span>
+  <% end %>
+<% end %>

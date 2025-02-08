@@ -1,0 +1,18 @@
+<%= turbo_frame_tag 'notifications' do %>
+  <% if @notifications.present? %>
+    <div class="flex justify-center items-center">
+      <%= link_to mark_all_as_read_notifications_path,
+      class: 'bg-gray-200 hover:bg-red-400 rounded-[10px] px-3 py-2',
+      method: :delete,
+      remote: true,
+      data: {turbo_method: :delete } do %>
+        全て既読 <i class="fa-regular fa-trash-can fa-lg"></i>
+      <% end %>
+    </div>
+    <% @notifications.each do |notification| %>
+        <%= render 'notifications/notification', { notification: notification } %>
+    <% end %>
+  <% else %>
+      <%= render 'notifications/no_notification' %>
+  <% end %>
+<% end %>

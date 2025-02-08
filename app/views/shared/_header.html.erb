@@ -2,10 +2,12 @@
   <%= link_to root_path do %>
     <%= image_tag 'top.png' %>
   <% end %>
-  <button id="button" type="button" class="z-20 absolute top-6 right-6 md:hidden">
-    <i id="bars" class="fa-solid fa-bars fa-2x hover:text-gray-500"></i>
-    <i id="xmark" class="fa-solid fa-xmark fa-2x hover:text-gray-500 hidden"></i>
-  </button>
+  <div class="md:hidden">
+    <button id="button" type="button" class="z-20 absolute top-6 right-6 md:hidden">
+      <i id="bars" class="fa-solid fa-bars fa-2x hover:text-gray-500"></i>
+      <i id="xmark" class="fa-solid fa-xmark fa-2x hover:text-gray-500 hidden"></i>
+    </button>
+  </div>
   <nav>
     <ul id="menu" class="fixed top-0 left-0 z-10 w-full bg-point text-center font-bold translate-x-full transition ease-linear">
       <li class="p-1 sm:p-3"><i class="fa-solid fa-list"></i><%= link_to t('header.post_index'), posts_path, class: 'hover:text-gray-500 ml-2' %></li>
@@ -14,10 +16,28 @@
       <li class="p-1 sm:p-3"><i class="fa-regular fa-user ml-3"></i><%= link_to t('header.my_page'), profile_path, class: 'hover:text-gray-500 ml-2' %></li>
       <li class="p-1 sm:p-3"><i class="fa-solid fa-arrow-right-from-bracket ml-3"></i><%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete }, class: 'hover:text-gray-500 ml-2' %></li>
     </ul>
+    <div class="dropdown dropdown-end md:hidden right-20">
+      <div tabindex="0">
+        <i class="fa-solid fa-bell fa-lg hover:text-gray-500"></i>
+        <%= render 'notifications/notification_count' %>
+      </div>
+      <ul tabindex="0" class="dropdown-content text-sm bg-base-100 rounded-box z-[1] w-64 p-2 shadow">
+        <%= render 'shared/notifications_dropdown' %>
+      </ul>
+    </div>
     <div class="space-x-14 items-center text-lg font-bold md:flex hidden md:block">
       <%= link_to t('header.post_index'), posts_path, class: 'hover:text-gray-500' %>
       <%= link_to t('header.create_post'), new_post_path, class: 'hover:text-gray-500' %>
       <%= link_to t('header.create_appetizer'), new_appetizer_path, class: 'hover:text-gray-500' %>
+      <div class="dropdown dropdown-end">
+        <div tabindex="0">
+          <i class="fa-solid fa-bell fa-lg hover:text-gray-500"></i>
+          <%= render 'notifications/notification_count' %>
+        </div>
+        <ul tabindex="0" class="dropdown-content text-sm bg-base-100 rounded-box z-[1] w-96 p-2 shadow">
+          <%= render 'shared/notifications_dropdown' %>
+        </ul>
+      </div>
       <div class="dropdown dropdown-hover">
         <% if current_user.avatar? %>
           <%= image_tag current_user.avatar.url, class:"rounded-[10px] w-10 h-10" %>
